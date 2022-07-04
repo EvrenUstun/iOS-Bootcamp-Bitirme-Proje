@@ -26,12 +26,9 @@ class SelectCityViewController: UIViewController {
     }
     
     func setupUI() {
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [
-            UIColor(red: 0.24, green: 0.26, blue: 0.31, alpha: 1).cgColor,
-            UIColor(red: 0.09, green: 0.09, blue: 0.12, alpha: 1).cgColor
-        ]
-        view.layer.insertSublayer(gradientLayer, at: 0)
+        // Gradient background settings.
+        prepareGradientBackground()
+        
         self.title = "Şehir Seçin"
         
         selectCityTableViewHelper = .init(with: cityTableView, citySearchBar: citySearchBar)
