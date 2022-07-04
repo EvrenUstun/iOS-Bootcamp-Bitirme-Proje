@@ -43,13 +43,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     func setupUI() {
         
         // Gradient background settings.
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = view.bounds
-        gradientLayer.colors = [
-            UIColor(red: 0.24, green: 0.26, blue: 0.31, alpha: 1).cgColor,
-            UIColor(red: 0.09, green: 0.09, blue: 0.12, alpha: 1).cgColor
-        ]
-        backgroundView.layer.insertSublayer(gradientLayer, at: 0)
+        prepareGradientBackground()
         
         navigationItem.hidesBackButton = true
         emailTextfield.text = "deneme@gmail.com"  //Silinecek
@@ -57,22 +51,26 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         // E-mail text field settings.
         emailTextfield.attributedPlaceholder = NSAttributedString(
             string: "E-POSTA ADRESİNİZ",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
+            attributes: [
+                NSAttributedString.Key.foregroundColor: Asset.grayscaleGray25.color,
+                NSAttributedString.Key.font: UIFont.systemFont(ofSize: 18.0)
+            ]
         )
-        emailTextfield.textColor = .white
+        emailTextfield.textColor = Asset.solidWhite.color
         emailTextfield.setPadding()
-        let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: emailTextfield.frame.height, width: emailTextfield.frame.width - 1, height: 1.0)
-        bottomLine.backgroundColor = UIColor.lightGray.cgColor
-        emailTextfield.borderStyle = UITextField.BorderStyle.none
-        emailTextfield.layer.addSublayer(bottomLine)
+        
+        bottomLayerForButton()
         
         // Welcome text settings.
         let text = "Charger'a hoş geldiniz.".withBoldText(text: "Charger'a")
         welcomeLabel.attributedText = text
+        welcomeLabel.textColor = Asset.solidWhite.color
+        loginLabel.textColor = Asset.grayscaleGray25.color
+        
+        loginButton.setImage(UIImage(asset: Asset.loginButton), for: .normal)
         
     }
-    
+
     // MARK: - func for location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
@@ -102,6 +100,14 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
             present(alertController, animated: true)
         }
         
+    }
+    
+    private func bottomLayerForButton(){
+        let bottomLine = CALayer()
+        bottomLine.frame = CGRect(x: 0.0, y: emailTextfield.frame.height, width: emailTextfield.frame.width - 1, height: 1.0)
+        bottomLine.backgroundColor = Asset.grayscaleGray25.color.cgColor
+        emailTextfield.borderStyle = UITextField.BorderStyle.none
+        emailTextfield.layer.addSublayer(bottomLine)
     }
 
 }
