@@ -1,0 +1,5 @@
+xcassets:
+  paths:
+   - Charger/Assets.xcassets
+  templateName: swift5
+  output: Assets.swift

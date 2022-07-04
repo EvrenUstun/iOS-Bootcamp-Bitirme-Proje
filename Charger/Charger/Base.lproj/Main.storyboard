@@ -28,7 +28,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charger'ı kullanmak için giriş yapmanız gerekiyor." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7nz-2g-3aF">
-                                <rect key="frame" x="20" y="227.5" width="374" height="48"/>
+                                <rect key="frame" x="8" y="227.5" width="398" height="48"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -39,12 +39,8 @@
                                     <constraint firstAttribute="height" constant="44" id="r3S-gi-MLA"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="GİRİŞ YAP">
-                                    <backgroundConfiguration key="background" cornerRadius="30">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <buttonConfiguration key="configuration" style="plain">
+                                    <backgroundConfiguration key="background" cornerRadius="30"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sac-tu-5ct"/>
@@ -56,14 +52,14 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="RXl-aw-DOV" secondAttribute="trailing" constant="67" id="3ng-HC-R6n"/>
                             <constraint firstItem="7nz-2g-3aF" firstAttribute="top" relation="lessThanOrEqual" secondItem="EOz-cv-Qfc" secondAttribute="bottom" constant="25" id="68j-Ms-pum"/>
-                            <constraint firstItem="7nz-2g-3aF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Cyi-v3-g0b"/>
+                            <constraint firstItem="7nz-2g-3aF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="Cyi-v3-g0b"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="RXl-aw-DOV" secondAttribute="bottom" constant="80" id="DLz-0X-PGe"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="EOz-cv-Qfc" secondAttribute="trailing" constant="50" id="O8S-Pl-fGd"/>
                             <constraint firstItem="yQA-ca-eZH" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PGH-Xi-3lg"/>
                             <constraint firstItem="EOz-cv-Qfc" firstAttribute="top" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="81" id="UeW-Eb-ysK"/>
                             <constraint firstItem="RXl-aw-DOV" firstAttribute="top" relation="lessThanOrEqual" secondItem="yQA-ca-eZH" secondAttribute="bottom" constant="267" id="Xln-YL-tPq"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="yQA-ca-eZH" secondAttribute="trailing" constant="20" id="h35-F8-AAi"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7nz-2g-3aF" secondAttribute="trailing" constant="20" id="hfz-vo-eHk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7nz-2g-3aF" secondAttribute="trailing" constant="8" id="hfz-vo-eHk"/>
                             <constraint firstItem="yQA-ca-eZH" firstAttribute="top" relation="lessThanOrEqual" secondItem="7nz-2g-3aF" secondAttribute="bottom" constant="150" id="jBD-qH-x6p"/>
                             <constraint firstItem="EOz-cv-Qfc" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="lds-80-hZR"/>
                             <constraint firstItem="RXl-aw-DOV" firstAttribute="leading" relation="lessThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="66" id="nrE-YA-dbk"/>
