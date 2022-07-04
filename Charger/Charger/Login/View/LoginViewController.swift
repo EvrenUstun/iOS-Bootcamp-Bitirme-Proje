@@ -75,6 +75,8 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print(location.coordinate)
+            ProjectRepository.latitude = location.coordinate.latitude
+            ProjectRepository.longitude = location.coordinate.longitude
         }
     }
     
