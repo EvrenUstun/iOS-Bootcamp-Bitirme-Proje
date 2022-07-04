@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ]
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(red: 0.26, green: 0.29, blue: 0.33, alpha: 1)
+        appearance.backgroundColor = Asset.charcoalGrey.color
         appearance.titleTextAttributes = attrs
         
         UIBarButtonItem.appearance().setTitleTextAttributes(attrs, for: .normal)
