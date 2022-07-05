@@ -28,7 +28,6 @@ class StationModel{
         var urlComps = URLComponents(string: Constants.baseUrl + "/stations")!
         urlComps.queryItems = queryItems
         let url = urlComps.url!
-        print("Station url: \(url)")
         var request = URLRequest(url: url)
         // add headers for the request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements

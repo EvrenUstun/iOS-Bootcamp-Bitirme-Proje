@@ -64,6 +64,17 @@ extension StationTableViewHelper: UITableViewDelegate, UITableViewDataSource {
         cell.stationNameLabel.text = filteredStations?[indexPath.row].stationName ?? "N/A"
         cell.distanceInKmLabel.text = getCleanKm(filteredStations?[indexPath.row].distanceInKM)
         
+        let acChargeType = filteredStations?[indexPath.row].sockets!.contains(where: { $0.chargeType == "AC" })
+        let dcChargeType = filteredStations?[indexPath.row].sockets!.contains(where: { $0.chargeType == "DC" })
+        
+        if acChargeType! && dcChargeType! {
+            cell.chargeTypeIcon.image = Asset.acdcAvatar.image
+        }else if dcChargeType! {
+            cell.chargeTypeIcon.image = Asset.dcAvatar.image
+        }else if acChargeType! {
+            cell.chargeTypeIcon.image = Asset.acavatar.image
+        }
+        
         cell.socketLabel.text = "\((filteredStations?[indexPath.row].socketCount ?? 0) - (filteredStations?[indexPath.row].occupiedSocketCount ?? 0)) / \(filteredStations?[indexPath.row].socketCount ?? 0)"
         
         return cell
