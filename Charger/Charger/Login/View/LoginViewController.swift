@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         bottomLayerForButton()
         
         // Welcome text settings.
-        let text = "Charger'a hoş geldiniz.".withBoldText(text: "Charger'a")
+        let text = "Charger'a hoş geldiniz.".withBoldText(text: "Charger'a", fontSize: 28)
         welcomeLabel.attributedText = text
         welcomeLabel.textColor = Asset.solidWhite.color
         loginLabel.textColor = Asset.grayscaleGray25.color
@@ -75,6 +75,8 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             print(location.coordinate)
+            ProjectRepository.latitude = location.coordinate.latitude
+            ProjectRepository.longitude = location.coordinate.longitude
         }
     }
     

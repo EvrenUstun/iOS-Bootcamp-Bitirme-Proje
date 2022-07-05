@@ -15,13 +15,10 @@ class SelectCityViewController: UIViewController {
     
     private var selectCityTableViewHelper: SelectCityTableViewHelper!
     
-    let gradientLayer = CAGradientLayer()
-    
     private let viewModel = CityViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
     }
     
@@ -36,6 +33,9 @@ class SelectCityViewController: UIViewController {
         viewModel.delegate = self
         
         viewModel.getCities()
+        
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
+        self.navigationItem.backBarButtonItem?.tintColor = Asset.grayscaleGray25.color
         
     }
 }
