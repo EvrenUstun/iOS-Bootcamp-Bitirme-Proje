@@ -34,6 +34,7 @@
 		B1A6956128737D100084F72D /* StationCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */; };
 		B1B687F0286F01FA00B3398E /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B687EF286F01FA00B3398E /* CityViewModel.swift */; };
 		B1B687F2286F13B700B3398E /* SelectCityTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B687F1286F13B700B3398E /* SelectCityTableViewHelper.swift */; };
+		B1B9CB3A2874BB6B00C70FD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9CB392874BB6B00C70FD5 /* FilterViewController.swift */; };
 		B1DB5EC428675E2C00431F80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB5EC328675E2C00431F80 /* AppDelegate.swift */; };
 		B1DB5EC628675E2C00431F80 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB5EC528675E2C00431F80 /* SceneDelegate.swift */; };
 		B1DB5EC828675E2C00431F80 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB5EC728675E2C00431F80 /* LoginViewController.swift */; };
@@ -71,6 +72,7 @@
 		B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCustomTableViewCell.xib; sourceTree = "<group>"; };
 		B1B687EF286F01FA00B3398E /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		B1B687F1286F13B700B3398E /* SelectCityTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityTableViewHelper.swift; sourceTree = "<group>"; };
+		B1B9CB392874BB6B00C70FD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		B1DB5EC028675E2C00431F80 /* Charger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Charger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DB5EC328675E2C00431F80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1DB5EC528675E2C00431F80 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				B1A69558287369D80084F72D /* StationTableViewHelper.swift */,
 				B1A6955E28737D100084F72D /* StationCustomTableViewCell.swift */,
 				B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */,
+				B1B9CB392874BB6B00C70FD5 /* FilterViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				B17314C4286A0C6B005F6A1B /* City.swift in Sources */,
 				B1DB5EC628675E2C00431F80 /* SceneDelegate.swift in Sources */,
 				B1A6955328735D590084F72D /* StationModel.swift in Sources */,
+				B1B9CB3A2874BB6B00C70FD5 /* FilterViewController.swift in Sources */,
 				B1175E3C2868464600D91661 /* ProfileViewController.swift in Sources */,
 				B17CEAE8286E22950045BE16 /* LoginViewModel.swift in Sources */,
 				B1A69557287362610084F72D /* StationViewController.swift in Sources */,

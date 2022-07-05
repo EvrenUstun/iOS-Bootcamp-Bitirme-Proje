@@ -51,6 +51,9 @@ class StationViewController: UIViewController {
     @objc
     func filterButtonPressed() {
         print("Filter pressed.")
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterViewController") as? FilterViewController{
+                self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
 }
 
