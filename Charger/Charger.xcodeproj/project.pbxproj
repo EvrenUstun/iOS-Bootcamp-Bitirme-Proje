@@ -27,6 +27,11 @@
 		B1A6955328735D590084F72D /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955228735D590084F72D /* StationModel.swift */; };
 		B1A6955528735ECA0084F72D /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955428735ECA0084F72D /* Station.swift */; };
 		B1A69557287362610084F72D /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A69556287362610084F72D /* StationViewController.swift */; };
+		B1A69559287369D80084F72D /* StationTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A69558287369D80084F72D /* StationTableViewHelper.swift */; };
+		B1A6955B287373EA0084F72D /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955A287373EA0084F72D /* UIApplication.swift */; };
+		B1A6955D287376460084F72D /* StationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955C287376460084F72D /* StationViewModel.swift */; };
+		B1A6956028737D100084F72D /* StationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955E28737D100084F72D /* StationCustomTableViewCell.swift */; };
+		B1A6956128737D100084F72D /* StationCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */; };
 		B1B687F0286F01FA00B3398E /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B687EF286F01FA00B3398E /* CityViewModel.swift */; };
 		B1B687F2286F13B700B3398E /* SelectCityTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B687F1286F13B700B3398E /* SelectCityTableViewHelper.swift */; };
 		B1DB5EC428675E2C00431F80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB5EC328675E2C00431F80 /* AppDelegate.swift */; };
@@ -59,6 +64,11 @@
 		B1A6955228735D590084F72D /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
 		B1A6955428735ECA0084F72D /* Station.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		B1A69556287362610084F72D /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
+		B1A69558287369D80084F72D /* StationTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationTableViewHelper.swift; sourceTree = "<group>"; };
+		B1A6955A287373EA0084F72D /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		B1A6955C287376460084F72D /* StationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewModel.swift; sourceTree = "<group>"; };
+		B1A6955E28737D100084F72D /* StationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCustomTableViewCell.swift; sourceTree = "<group>"; };
+		B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCustomTableViewCell.xib; sourceTree = "<group>"; };
 		B1B687EF286F01FA00B3398E /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		B1B687F1286F13B700B3398E /* SelectCityTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityTableViewHelper.swift; sourceTree = "<group>"; };
 		B1DB5EC028675E2C00431F80 /* Charger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Charger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -250,6 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				B1A69556287362610084F72D /* StationViewController.swift */,
+				B1A69558287369D80084F72D /* StationTableViewHelper.swift */,
+				B1A6955E28737D100084F72D /* StationCustomTableViewCell.swift */,
+				B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -257,6 +270,7 @@
 		B1A6955128735D310084F72D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				B1A6955C287376460084F72D /* StationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -325,6 +339,7 @@
 				B1DB5ED728675E5600431F80 /* StringExtension.swift */,
 				B1175E4028685F2000D91661 /* TextFieldExtension.swift */,
 				B1A6954C287354C50084F72D /* UIViewControllerExtension.swift */,
+				B1A6955A287373EA0084F72D /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -401,6 +416,7 @@
 				B1DB5ED028675E2E00431F80 /* LaunchScreen.storyboard in Resources */,
 				B19CFB082872D434006CE9D9 /* Assets.xcassets in Resources */,
 				B1DB5ECB28675E2C00431F80 /* Main.storyboard in Resources */,
+				B1A6956128737D100084F72D /* StationCustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,7 +470,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1A6955B287373EA0084F72D /* UIApplication.swift in Sources */,
 				B12834DB2868381C007C8BFF /* HomePageViewController.swift in Sources */,
+				B1A6955D287376460084F72D /* StationViewModel.swift in Sources */,
 				B1309FFF286E2FE900B54A7B /* AlertManager.swift in Sources */,
 				B1DB5EC828675E2C00431F80 /* LoginViewController.swift in Sources */,
 				B1B687F2286F13B700B3398E /* SelectCityTableViewHelper.swift in Sources */,
@@ -463,6 +481,7 @@
 				B100642E28677FDD00BFD416 /* User.swift in Sources */,
 				B1A135232868A92C008D4DFB /* LogoutAPI.swift in Sources */,
 				B100642B2867786F00BFD416 /* LoginModel.swift in Sources */,
+				B1A69559287369D80084F72D /* StationTableViewHelper.swift in Sources */,
 				B1B687F0286F01FA00B3398E /* CityViewModel.swift in Sources */,
 				B17314C4286A0C6B005F6A1B /* City.swift in Sources */,
 				B1DB5EC628675E2C00431F80 /* SceneDelegate.swift in Sources */,
@@ -477,6 +496,7 @@
 				B1A1351D2868A531008D4DFB /* ProjectRepository.swift in Sources */,
 				B1DB5ED828675E5600431F80 /* StringExtension.swift in Sources */,
 				B1A69548287351000084F72D /* Assets.swift in Sources */,
+				B1A6956028737D100084F72D /* StationCustomTableViewCell.swift in Sources */,
 				B17ECA2D2869D16E005AB4CB /* Constant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

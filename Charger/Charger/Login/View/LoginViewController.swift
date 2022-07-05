@@ -62,7 +62,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         bottomLayerForButton()
         
         // Welcome text settings.
-        let text = "Charger'a hoş geldiniz.".withBoldText(text: "Charger'a")
+        let text = "Charger'a hoş geldiniz.".withBoldText(text: "Charger'a", fontSize: 28)
         welcomeLabel.attributedText = text
         welcomeLabel.textColor = Asset.solidWhite.color
         loginLabel.textColor = Asset.grayscaleGray25.color

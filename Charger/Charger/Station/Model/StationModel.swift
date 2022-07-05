@@ -9,7 +9,7 @@ import Foundation
 
 class StationModel{
     
-    func getAllStation(completion: @escaping (Result<[Station], Error>) -> Void){
+    func getAllStation(_ city: String,completion: @escaping (Result<[Station], Error>) -> Void){
         var latitude: String
         var longitude: String
         if(ProjectRepository.longitude == nil || ProjectRepository.latitude == nil) {
@@ -48,9 +48,15 @@ class StationModel{
             }
             
             do{
+                var filteredStations: [Station] = []
                 // Decode response
                 let stations = try JSONDecoder().decode([Station].self, from: data)
-                completion(.success(stations))
+                for station in stations {
+                    if station.geoLocation?.province == city{
+                        filteredStations.append(station)
+                    }
+                }
+                completion(.success(filteredStations))
             }catch{
                 completion(.failure(error))
             }

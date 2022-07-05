@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -112,7 +111,7 @@
                                     <action selector="createAppointmentButtonPressed:" destination="wK8-bQ-jkK" eventType="touchUpInside" id="gJd-mG-vXu"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="03" translatesAutoresizingMaskIntoConstraints="NO" id="god-Sb-FkL">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBadge" translatesAutoresizingMaskIntoConstraints="NO" id="god-Sb-FkL">
                                 <rect key="frame" x="137" y="179" width="140" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="140" id="0tI-0y-P1V"/>
@@ -217,36 +216,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="GPV-ZA-c09">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kF3-sC-wZn">
+                                <rect key="frame" x="0.0" y="146.5" width="414" height="749.5"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <searchBar contentMode="redraw" barStyle="black" placeholder="İstasyon Ara" translatesAutoresizingMaskIntoConstraints="NO" id="27b-VL-0wz">
                                 <rect key="frame" x="0.0" y="44" width="414" height="51"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="barTintColor" red="0.26274509800000001" green="0.28627450980000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="dqn-e9-e9C">
-                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="'İstanbul' şehri için 3 sonuç görüntüleniyor." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT1-eg-CFY">
+                                <rect key="frame" x="20" y="111" width="374" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="drF-w7-bcI"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="drF-w7-bcI" firstAttribute="trailing" secondItem="dqn-e9-e9C" secondAttribute="trailing" id="2vG-HU-T7p"/>
-                            <constraint firstItem="dqn-e9-e9C" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="8s5-1R-um7"/>
-                            <constraint firstItem="dqn-e9-e9C" firstAttribute="top" secondItem="GPV-ZA-c09" secondAttribute="bottom" id="BJU-Fc-KL3"/>
-                            <constraint firstItem="GPV-ZA-c09" firstAttribute="top" secondItem="drF-w7-bcI" secondAttribute="top" id="HiE-YR-8Wv"/>
-                            <constraint firstItem="GPV-ZA-c09" firstAttribute="trailing" secondItem="drF-w7-bcI" secondAttribute="trailing" id="bB5-jp-9i8"/>
-                            <constraint firstAttribute="bottom" secondItem="dqn-e9-e9C" secondAttribute="bottom" constant="34" id="cN3-dd-YTw"/>
-                            <constraint firstItem="GPV-ZA-c09" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="loq-sd-aha"/>
-                            <constraint firstItem="dqn-e9-e9C" firstAttribute="top" secondItem="GPV-ZA-c09" secondAttribute="bottom" id="ows-Kj-B2O"/>
+                            <constraint firstItem="27b-VL-0wz" firstAttribute="trailing" secondItem="drF-w7-bcI" secondAttribute="trailing" id="0uM-ek-68z"/>
+                            <constraint firstItem="kF3-sC-wZn" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="CgQ-xZ-8Hr"/>
+                            <constraint firstItem="zT1-eg-CFY" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" constant="20" id="DeZ-C5-Swq"/>
+                            <constraint firstItem="27b-VL-0wz" firstAttribute="top" secondItem="drF-w7-bcI" secondAttribute="top" id="Nst-L8-4qu"/>
+                            <constraint firstItem="zT1-eg-CFY" firstAttribute="top" secondItem="27b-VL-0wz" secondAttribute="bottom" constant="16" id="RMm-ai-XTi"/>
+                            <constraint firstAttribute="bottom" secondItem="kF3-sC-wZn" secondAttribute="bottom" id="WXr-wY-ObP"/>
+                            <constraint firstItem="drF-w7-bcI" firstAttribute="trailing" secondItem="zT1-eg-CFY" secondAttribute="trailing" constant="20" id="fPk-tf-ExS"/>
+                            <constraint firstItem="27b-VL-0wz" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="vG0-qU-Een"/>
+                            <constraint firstItem="kF3-sC-wZn" firstAttribute="trailing" secondItem="drF-w7-bcI" secondAttribute="trailing" id="x8C-bN-fFy"/>
+                            <constraint firstItem="kF3-sC-wZn" firstAttribute="top" secondItem="zT1-eg-CFY" secondAttribute="bottom" constant="16" id="yb0-aG-2mh"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="stationSearchbar" destination="GPV-ZA-c09" id="bNj-mB-ZKT"/>
-                        <outlet property="stationTableView" destination="dqn-e9-e9C" id="NGn-o6-yt2"/>
+                        <outlet property="cityResultLabel" destination="zT1-eg-CFY" id="i5B-3A-Fyv"/>
+                        <outlet property="stationSearchbar" destination="27b-VL-0wz" id="6ON-si-XN7"/>
+                        <outlet property="stationTableView" destination="kF3-sC-wZn" id="zQF-Ju-paN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2A7-iX-FKW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2160" y="1154"/>
+            <point key="canvasLocation" x="2159.4202898550725" y="1153.7946428571429"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="mTW-ih-gjx">
@@ -363,6 +377,12 @@
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </textAttributes>
+                            <barButtonItemAppearance key="backButtonAppearance">
+                                <barButtonItemStateAppearance key="normal"/>
+                                <barButtonItemStateAppearance key="highlighted"/>
+                                <barButtonItemStateAppearance key="disabled"/>
+                                <barButtonItemStateAppearance key="focused"/>
+                            </barButtonItemAppearance>
                         </navigationBarAppearance>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -377,11 +397,8 @@
     </scenes>
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
-        <image name="03" width="45" height="45"/>
+        <image name="iconBadge" width="130" height="138"/>
         <image name="person" catalog="system" width="128" height="117"/>
         <image name="person.circle" catalog="system" width="128" height="121"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
