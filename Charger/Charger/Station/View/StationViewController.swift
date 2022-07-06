@@ -12,6 +12,8 @@ class StationViewController: UIViewController {
     @IBOutlet weak var stationSearchbar: UISearchBar!
     @IBOutlet weak var stationTableView: UITableView!
     @IBOutlet weak var cityResultLabel: UILabel!
+    @IBOutlet weak var notFoundLabel: UILabel!
+    @IBOutlet weak var againSearchLabel: UILabel!
     
     private var stationTableViewHelper: StationTableViewHelper!
     
@@ -30,9 +32,12 @@ class StationViewController: UIViewController {
         // Gradient background settings.
         prepareGradientBackground()
         
+        notFoundLabel.isHidden = true
+        againSearchLabel.isHidden = true
+        
         self.title = "İstasyon Seçin"
         
-        stationTableViewHelper = .init(with: stationTableView, stationSearchbar: stationSearchbar, cityResultLabel: cityResultLabel, city: city)
+        stationTableViewHelper = .init(with: stationTableView, stationSearchbar: stationSearchbar, cityResultLabel: cityResultLabel, notFoundLabel: notFoundLabel, againSearchLabel:againSearchLabel, city: city)
         
         viewModel.delegate = self
         

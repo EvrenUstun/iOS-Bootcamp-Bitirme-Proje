@@ -12,6 +12,8 @@ class StationTableViewHelper: NSObject {
     weak var stationTableView: UITableView!
     weak var stationSearchbar: UISearchBar!
     weak var cityResultLabel: UILabel!
+    weak var notFoundLabel: UILabel!
+    weak var againSearchLabel: UILabel!
     private var city: String = ""
     private var stations: [Station]?
     private var filteredStations: [Station]?
@@ -20,6 +22,8 @@ class StationTableViewHelper: NSObject {
         with stationTableView: UITableView,
         stationSearchbar: UISearchBar,
         cityResultLabel: UILabel,
+        notFoundLabel: UILabel,
+        againSearchLabel: UILabel,
         city: String
     ) {
         super.init()
@@ -27,6 +31,8 @@ class StationTableViewHelper: NSObject {
         self.stationTableView = stationTableView
         self.stationSearchbar = stationSearchbar
         self.cityResultLabel = cityResultLabel
+        self.notFoundLabel = notFoundLabel
+        self.againSearchLabel = againSearchLabel
         self.city = city
         
         self.stationTableView?.delegate = self
@@ -49,6 +55,27 @@ class StationTableViewHelper: NSObject {
     private func reloadLabel(_ count: Int) {
         let text = "'\(self.city)' şehri için \(count) sonuç görüntüleniyor".withBoldText(text: "'\(self.city)'", fontSize: 18)
         self.cityResultLabel.attributedText = text
+    }
+    
+    private func notFoundLabelSettings(){
+        let screenSize: CGRect = UIScreen.main.bounds
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        
+        notFoundLabel.isHidden = false
+        againSearchLabel.isHidden = false
+
+        notFoundLabel.frame = CGRect(x: (screenWidth/4-50) , y: screenHeight/4, width: self.notFoundLabel.bounds.size.width, height: self.notFoundLabel.bounds.size.height) // x , y, width , height
+        notFoundLabel.textAlignment = .center
+        notFoundLabel.sizeToFit()
+        notFoundLabel.textColor = Asset.solidWhite.color
+        self.stationTableView.addSubview(notFoundLabel)
+        
+        againSearchLabel.frame = CGRect(x: (screenWidth/4) , y: (screenHeight/4+70), width: self.againSearchLabel.bounds.size.width, height: self.againSearchLabel.bounds.size.height) // x , y, width , height
+        againSearchLabel.textAlignment = .center
+        againSearchLabel.sizeToFit()
+        againSearchLabel.textColor = Asset.grayscaleGray25.color
+        self.stationTableView.addSubview(againSearchLabel)
     }
 }
 
@@ -102,5 +129,14 @@ extension StationTableViewHelper: UISearchBarDelegate {
         }
         stationTableView.reloadData()
         reloadLabel(filteredStations?.count ?? 0)
+        
+        notFoundLabel.isHidden = true
+        againSearchLabel.isHidden = true
+        
+        // if statements for city not found
+        if filteredStations?.count == 0 {
+            notFoundLabelSettings()
+            stationTableView.reloadData()
+        }
     }
 }
