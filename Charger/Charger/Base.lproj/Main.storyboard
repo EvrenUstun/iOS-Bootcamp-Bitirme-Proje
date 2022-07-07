@@ -187,6 +187,20 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aramanız ile eşleşen bir sonuç bulunamadı." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="uMu-VW-L6b">
+                                <rect key="frame" x="0.0" y="417" width="414" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lütfen yeni bir arama yapın." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="KUt-Ru-C24">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="V1A-4U-UCW"/>
                         <color key="backgroundColor" red="0.1764705926" green="0.19215688110000001" blue="0.22745099660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -201,9 +215,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="againSearchLabel" destination="KUt-Ru-C24" id="5zu-CL-F9o"/>
                         <outlet property="citySearchBar" destination="4ct-7V-0IU" id="Zym-ll-hqZ"/>
                         <outlet property="cityTableView" destination="Jhm-Gg-hWo" id="P4u-mR-KUb"/>
                         <outlet property="loadingIndicator" destination="8aA-CW-dSK" id="iHc-fz-g8T"/>
+                        <outlet property="notFoundLabel" destination="uMu-VW-L6b" id="PaH-ib-w2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t4T-mn-DTy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -238,6 +254,20 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aramanız ile eşleşen bir sonuç bulunamadı." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="ynC-ff-qOI">
+                                <rect key="frame" x="0.0" y="417" width="414" height="62"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lütfen yeni bir arama yapın." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Tm-YJ-OE8">
+                                <rect key="frame" x="0.0" y="426" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="drF-w7-bcI"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -255,7 +285,9 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="againSearchLabel" destination="0Tm-YJ-OE8" id="6jt-dI-CDh"/>
                         <outlet property="cityResultLabel" destination="zT1-eg-CFY" id="i5B-3A-Fyv"/>
+                        <outlet property="notFoundLabel" destination="ynC-ff-qOI" id="8La-Uk-ukL"/>
                         <outlet property="stationSearchbar" destination="27b-VL-0wz" id="6ON-si-XN7"/>
                         <outlet property="stationTableView" destination="kF3-sC-wZn" id="zQF-Ju-paN"/>
                     </connections>
@@ -299,13 +331,16 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VBE-gP-Edb">
                                 <rect key="frame" x="16" y="121.5" width="43" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="AC" cornerStyle="capsule">
+                                <buttonConfiguration key="configuration" style="filled" title="AC">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didACButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="eV7-IM-jES"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UE2-ba-2ie">
                                 <rect key="frame" x="75" y="121.5" width="114.5" height="31"/>
@@ -313,10 +348,13 @@
                                 <buttonConfiguration key="configuration" style="filled" title="DC (Hızlı Şarj)" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didDCButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="dKC-jD-p6p"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eha-hV-Muy">
                                 <rect key="frame" x="16" y="230" width="68" height="31"/>
@@ -324,38 +362,50 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Type 2" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didType2ButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="MCq-5c-406"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XQM-di-hOn">
-                                <rect key="frame" x="100" y="230" width="51.5" height="31"/>
+                                <rect key="frame" x="100" y="230" width="53" height="31"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="CSS" cornerStyle="capsule">
+                                <buttonConfiguration key="configuration" style="filled" title="CSC" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didCSSButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="Dj2-5X-SU9"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Erz-W5-aUK">
-                                <rect key="frame" x="167.5" y="230" width="92.5" height="31"/>
+                                <rect key="frame" x="169" y="230" width="92.5" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="CHAdeMO" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didCHAdeMOButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="zMz-VH-fIL"/>
+                                </connections>
                             </button>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="6" minValue="3" maxValue="15" translatesAutoresizingMaskIntoConstraints="NO" id="t2q-ef-7Hj">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="t2q-ef-7Hj">
                                 <rect key="frame" x="14" y="338.5" width="386" height="31"/>
                                 <color key="minimumTrackTintColor" name="main-primary"/>
                                 <color key="maximumTrackTintColor" name="grayscale-gray25"/>
                                 <color key="thumbTintColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <action selector="changeDistance:" destination="xww-Ry-rWz" eventType="valueChanged" id="BhE-kK-Wwq"/>
+                                </connections>
                             </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eq5-U5-A7r">
                                 <rect key="frame" x="66" y="768" width="281" height="44"/>
@@ -364,6 +414,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="filterButton"/>
+                                <connections>
+                                    <action selector="didFilterButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="pi3-ew-7kt"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKe-ac-fmX">
                                 <rect key="frame" x="16" y="373" width="11" height="22"/>
@@ -401,10 +454,13 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Otopark" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didParkButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="zP1-MD-Wmn"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UIo-ZF-Piz">
                                 <rect key="frame" x="108.5" y="472.5" width="54" height="31"/>
@@ -412,10 +468,13 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Büfe" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didBuffetButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="5y7-ZV-wWC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dxr-pb-1K1">
                                 <rect key="frame" x="178.5" y="472.5" width="58.5" height="31"/>
@@ -423,10 +482,13 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Wi-Fi" cornerStyle="capsule">
                                     <backgroundConfiguration key="background">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="strokeColor" name="state-security on"/>
+                                        <color key="strokeColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </backgroundConfiguration>
                                     <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="didWifButtonTapped:" destination="xww-Ry-rWz" eventType="touchUpInside" id="tW7-C1-rjw"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Kg-zO-CZC"/>
@@ -479,6 +541,17 @@
                             <constraint firstItem="6Kg-zO-CZC" firstAttribute="trailing" secondItem="4Ls-Aw-Lgb" secondAttribute="trailing" constant="16" id="yhZ-wR-lQS"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="chargerTypeACButton" destination="VBE-gP-Edb" id="kGn-ce-gIW"/>
+                        <outlet property="chargerTypeDCButton" destination="UE2-ba-2ie" id="2QY-An-zBI"/>
+                        <outlet property="distanceSlider" destination="t2q-ef-7Hj" id="qUO-dQ-3pw"/>
+                        <outlet property="servicesBuffetButton" destination="UIo-ZF-Piz" id="0Al-VQ-ILH"/>
+                        <outlet property="servicesParkButton" destination="HNL-Bv-QTW" id="SmA-Zg-XXT"/>
+                        <outlet property="servicesWifiButton" destination="dxr-pb-1K1" id="LfL-zp-EhR"/>
+                        <outlet property="socketCHAdeMOButton" destination="Erz-W5-aUK" id="Bkj-SU-NgX"/>
+                        <outlet property="socketCSSButton" destination="XQM-di-hOn" id="V77-HD-vW4"/>
+                        <outlet property="socketType2Button" destination="eha-hV-Muy" id="0Sx-ug-Ptk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uI1-eu-Zqq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -632,9 +705,6 @@
         </namedColor>
         <namedColor name="main-primary">
             <color red="0.0" green="1" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="state-security on">
-            <color red="1" green="0.17254901960784313" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -12,6 +12,8 @@ class SelectCityViewController: UIViewController {
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet private weak var citySearchBar: UISearchBar!
     @IBOutlet private weak var cityTableView: UITableView!
+    @IBOutlet weak var notFoundLabel: UILabel!
+    @IBOutlet weak var againSearchLabel: UILabel!
     
     private var selectCityTableViewHelper: SelectCityTableViewHelper!
     
@@ -26,9 +28,12 @@ class SelectCityViewController: UIViewController {
         // Gradient background settings.
         prepareGradientBackground()
         
+        notFoundLabel.isHidden = true
+        againSearchLabel.isHidden = true
+        
         self.title = "Şehir Seçin"
         
-        selectCityTableViewHelper = .init(with: cityTableView, citySearchBar: citySearchBar)
+        selectCityTableViewHelper = .init(with: cityTableView, citySearchBar: citySearchBar, notFoundLabel: notFoundLabel, againSearchLabel: againSearchLabel)
 
         viewModel.delegate = self
         

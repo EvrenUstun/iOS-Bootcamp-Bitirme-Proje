@@ -19,12 +19,14 @@ class StationViewController: UIViewController {
     
     private let viewModel = StationViewModel()
     
+    var chargerTypeFilter: [String] = []
+    var socketTypeFilter: [String] = []
+    var serviceFilter: [String] = []
+    var distance: Float = 15.0
     var city: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
         setupUI()
     }
     
@@ -41,7 +43,7 @@ class StationViewController: UIViewController {
         
         viewModel.delegate = self
         
-        viewModel.getStations(city)
+        viewModel.getStations(city, chargerTypeFilter, socketTypeFilter, serviceFilter, distance)
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = Asset.grayscaleGray25.color
@@ -55,9 +57,9 @@ class StationViewController: UIViewController {
     
     @objc
     func filterButtonPressed() {
-        print("Filter pressed.")
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FilterViewController") as? FilterViewController{
-                self.navigationController?.pushViewController(vc, animated: true)
+            vc.city = self.city
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

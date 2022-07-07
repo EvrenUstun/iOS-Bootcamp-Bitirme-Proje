@@ -14,6 +14,7 @@ class StationTableViewHelper: NSObject {
     weak var cityResultLabel: UILabel!
     weak var notFoundLabel: UILabel!
     weak var againSearchLabel: UILabel!
+    
     private var city: String = ""
     private var stations: [Station]?
     private var filteredStations: [Station]?
@@ -64,7 +65,7 @@ class StationTableViewHelper: NSObject {
         
         notFoundLabel.isHidden = false
         againSearchLabel.isHidden = false
-
+        
         notFoundLabel.frame = CGRect(x: (screenWidth/4-50) , y: screenHeight/4, width: self.notFoundLabel.bounds.size.width, height: self.notFoundLabel.bounds.size.height) // x , y, width , height
         notFoundLabel.textAlignment = .center
         notFoundLabel.sizeToFit()
