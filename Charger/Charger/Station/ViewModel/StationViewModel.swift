@@ -15,12 +15,12 @@ class StationViewModel {
     var model = StationModel()
     weak var delegate: StationViewModelDelegate?
     
-    func getStations(_ city: String) {
-        self.fetchData(city)
+    func getStations(_ city: String, _ chargerTypeFilter: [String], _ socketTypeFilter: [String], _ serviceFilter: [String], _ distance: Float) {
+        self.fetchData(city, chargerTypeFilter, socketTypeFilter, serviceFilter, distance)
     }
     
-    private func fetchData(_ city: String){
-        model.getAllStation(city)  { [unowned self] stations in
+    private func fetchData(_ city: String, _ chargerTypeFilter: [String], _ socketTypeFilter: [String], _ serviceFilter: [String], _ distance: Float){
+        model.getAllStation(city, chargerTypeFilter, socketTypeFilter, serviceFilter, distance)  { [unowned self] stations in
             switch stations{
             case .success(let station):
                 self.delegate?.didItemsFetch(station)
