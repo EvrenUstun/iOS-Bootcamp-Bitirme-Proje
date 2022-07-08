@@ -91,6 +91,7 @@ extension StationTableViewHelper: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.stationNameLabel.text = filteredStations?[indexPath.row].stationName ?? "N/A"
         cell.distanceInKmLabel.text = getCleanKm(filteredStations?[indexPath.row].distanceInKM)
+        cell.selectionStyle = .none
         
         let acChargeType = filteredStations?[indexPath.row].sockets!.contains(where: { $0.chargeType == "AC" })
         let dcChargeType = filteredStations?[indexPath.row].sockets!.contains(where: { $0.chargeType == "DC" })
@@ -111,6 +112,18 @@ extension StationTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectDateViewController") as? SelectDateViewController{
+            if let currentVC = UIApplication.topViewController() as? StationViewController {
+               //the type of currentVC is MyViewController inside the if statement, use it as you want to
+                currentVC.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     
     func getCleanKm(_ km: Double?) -> String {
         if km != nil{
