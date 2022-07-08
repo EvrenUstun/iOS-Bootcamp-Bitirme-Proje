@@ -74,6 +74,7 @@ extension SelectCityTableViewHelper: UITableViewDelegate, UITableViewDataSource 
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = .white
         cell.textLabel?.text = filteredCities?[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     
