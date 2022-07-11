@@ -37,9 +37,12 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
             locationManager.startUpdatingLocation()
         }
         
+        self.hideKeyboardWhenTappedAround()
+        self.emailTextfield.delegate = self
+        
         setupUI()
     }
-    
+
     func setupUI() {
         
         // Gradient background settings.
@@ -74,7 +77,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
     // MARK: - func for location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            print(location.coordinate)
             ProjectRepository.latitude = location.coordinate.latitude
             ProjectRepository.longitude = location.coordinate.longitude
         }
@@ -111,5 +113,11 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         emailTextfield.borderStyle = UITextField.BorderStyle.none
         emailTextfield.layer.addSublayer(bottomLine)
     }
+}
 
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+           self.view.endEditing(true)
+           return false
+       }
 }
