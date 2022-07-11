@@ -15,6 +15,12 @@ class SelectDateTableViewHelper: NSObject {
     weak var socketTwoTableView: UITableView!
     weak var socketThreeTableView: UITableView!
     var previousIndexPath: IndexPath?
+    var test: NSMutableArray = []
+    
+    var socketNumber: Int = 0
+    var hour: String = ""
+    
+    private var appointment: Appointment?
     
     init(
         with socketOneTableView: UITableView,
@@ -45,22 +51,26 @@ class SelectDateTableViewHelper: NSObject {
         socketThreeTableView.register(.init(nibName: "SelectDateTableViewCell", bundle: nil), forCellReuseIdentifier: "SelectDateTableViewCell3")
     }
     
+    func reloadTable(items: Appointment){
+        appointment = items
+        socketOneTableView.reloadData()
+        socketTwoTableView.reloadData()
+        socketThreeTableView.reloadData()
+    }
+    
 }
 
 extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        var numberOfRow = 3
-        
+
         if tableView.tag == 0 {
-            numberOfRow = 3
+            return appointment?.sockets?[0].day?.timeSlots?.count ?? 0
         }else if tableView.tag == 1 {
-            numberOfRow = 3
+            return appointment?.sockets?[1].day?.timeSlots?.count ?? 0
         }else {
-            numberOfRow = 3
+            return appointment?.sockets?[2].day?.timeSlots?.count ?? 0
         }
-        
-        return numberOfRow
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -68,19 +78,35 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
         if tableView.tag == 0 {
             if let cell = socketOneTableView.dequeueReusableCell(withIdentifier: "SelectDateTableViewCell", for: indexPath) as? SelectDateTableViewCell{
                 cellStyle(cell)
-                cell.hourLabel.text = numbers[indexPath.row]
+                cell.hourLabel.text = appointment?.sockets?[0].day?.timeSlots?[indexPath.row].slot ?? ""
+                if appointment?.sockets?[0].day?.timeSlots?[indexPath.row].isOccupied ?? false{
+                    cell.isUserInteractionEnabled = false
+                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
+                }
+                cell.tag = indexPath.row
+                test.addObjects(from: [cell])
                 return cell
             }
         }else if tableView.tag == 1 {
             if let cell = socketTwoTableView.dequeueReusableCell(withIdentifier: "SelectDateTableViewCell2", for: indexPath) as? SelectDateTableViewCell{
                 cellStyle(cell)
-                cell.hourLabel.text = "02:00"
+                cell.hourLabel.text = appointment?.sockets?[1].day?.timeSlots?[indexPath.row].slot ?? ""
+                if appointment?.sockets?[1].day?.timeSlots?[indexPath.row].isOccupied ?? false{
+                    cell.isUserInteractionEnabled = false
+                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
+                }
+                cell.tag = indexPath.row
                 return cell
             }
         }else {
             if let cell = socketThreeTableView.dequeueReusableCell(withIdentifier: "SelectDateTableViewCell3", for: indexPath) as? SelectDateTableViewCell{
                 cellStyle(cell)
-                cell.hourLabel.text = "03:00"
+                cell.hourLabel.text = appointment?.sockets?[2].day?.timeSlots?[indexPath.row].slot ?? ""
+                if appointment?.sockets?[2].day?.timeSlots?[indexPath.row].isOccupied ?? false{
+                    cell.isUserInteractionEnabled = false
+                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
+                }
+                cell.tag = indexPath.row
                 return cell
             }
         }
@@ -101,6 +127,7 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView.tag == 0 {
+            print("1")
             let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
             
             if previousIndexPath != nil {
@@ -112,9 +139,13 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
                 resetCellStyle(previousCell2)
                 resetCellStyle(previousCell3)
             }
+            previousIndexPath = indexPath
             selectedCellStyle(cell, indexPath)
+            socketNumber = (appointment?.sockets![0].socketNumber)!
+            hour = cell.hourLabel.text ?? ""
             
         }else if tableView.tag == 1 {
+            print("2")
             let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
 
             if previousIndexPath != nil {
@@ -126,20 +157,28 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
                 resetCellStyle(previousCell2)
                 resetCellStyle(previousCell3)
             }
+            previousIndexPath = indexPath
             selectedCellStyle(cell, indexPath)
+            socketNumber = (appointment?.sockets![1].socketNumber)!
+            hour = cell.hourLabel.text ?? ""
         }else {
+            print("3")
             let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
 
             if previousIndexPath != nil {
-                let previousCell = tableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
+//                print(previousIndexPath)
                 let previousCell2 = socketOneTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
                 let previousCell3 = socketTwoTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
+                let previousCell = tableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
                 
                 resetCellStyle(previousCell)
                 resetCellStyle(previousCell2)
                 resetCellStyle(previousCell3)
             }
+            previousIndexPath = indexPath
             selectedCellStyle(cell, indexPath)
+            socketNumber = (appointment?.sockets![2].socketNumber)!
+            hour = cell.hourLabel.text ?? ""
         }
     }
     
@@ -157,7 +196,7 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
     }
     
     private func selectedCellStyle(_ cell: SelectDateTableViewCell, _ indexPath: IndexPath){
-        previousIndexPath = indexPath
+//        previousIndexPath = indexPath
         cell.contentView.backgroundColor = Asset.dark.color
         cell.containerView.backgroundColor = Asset.dark.color
         cell.containerView.layer.borderColor = Asset.mainPrimary.color.cgColor
