@@ -21,18 +21,28 @@ class SelectDateViewController: UIViewController {
     @IBOutlet weak var socketTwoTableView: UITableView!
     @IBOutlet weak var socketThreeTableView: UITableView!
     @IBOutlet weak var continueButton: UIButton!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
+    var stationId: Int!
+    private var subTitle: String?
+    private var appointment: Appointment!
     
     private var selectDateTableViewHelper: SelectDateTableViewHelper!
     
     let datePicker = UIDatePicker()
     
+    private let viewModel = SelectDateViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
+    override func viewDidAppear(_ animated: Bool) {
+
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationItem.titleView =  setTitle(title: "Tarih ve Saat Seçin", subtitle: "BORUSAN OTO SAMANDIRA")
+
     }
     
     func setupUI() {
@@ -57,6 +67,8 @@ class SelectDateViewController: UIViewController {
         self.navigationItem.backBarButtonItem?.tintColor = Asset.grayscaleGray25.color
         
         createDatePicker()
+        viewModel.delegate = self
+        viewModel.getAvailableAppointments(stationId, datePicker.date)
     }
     
     func setTitle(title:String, subtitle:String) -> UIView {
@@ -104,6 +116,7 @@ class SelectDateViewController: UIViewController {
         
         datePickerTextField.inputAccessoryView = toolbar
         
+        // date picker mode
         datePicker.datePickerMode = .date
         datePicker.addTarget(self, action: #selector(dateChange(datepicker:)), for: UIControl.Event.valueChanged)
         
@@ -118,20 +131,17 @@ class SelectDateViewController: UIViewController {
             let lastOfYear = Calendar.current.date(byAdding: .day, value: -1, to: firstOfNextYear)
             datePicker.maximumDate = lastOfYear
         }
-        
-        datePickerTextField.inputView = datePicker
-        datePickerTextField.text = formatDate(date: Date()) // today
-        
         // assign date picker to the text field
         datePickerTextField.inputView = datePicker
-        
-        // date picker mode
-        datePicker.datePickerMode = .date
+        datePickerTextField.text = formatDate(date: Date()) // today
     }
     
     @objc
     func doneTapped(){
         datePickerTextField.text = formatDate(date: datePicker.date)
+       
+        viewModel.getAvailableAppointments(stationId, datePicker.date)
+//        selectDateTableViewHelper.reloadTable(items: appointment)
         self.view.endEditing(true)
     }
     
@@ -145,11 +155,36 @@ class SelectDateViewController: UIViewController {
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
          
-        formatter.dateFormat = "dd MMMM yyyy"
+        formatter.dateFormat = "dd MMM yyyy"
         return formatter.string(from: date)
     }
     
     @IBAction func continueButtonTapped(_ sender: Any) {
-        print("Devam et tıklandı.")
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AppointmentSummaryViewController") as? AppointmentSummaryViewController{
+            vc.appointmentDate = datePicker.date
+            vc.stationId = stationId
+            vc.whichSocketSelected = selectDateTableViewHelper.socketNumber
+            vc.appointmentHour = selectDateTableViewHelper.hour
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+}
+
+extension SelectDateViewController: SelectDateViewModelDelegate {
+    func didItemsFetch(_ items: Appointment) {
+        DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
+            self.appointment = items
+            self.subTitle = items.stationName
+            self.navigationItem.titleView =  self.setTitle(title: "Tarih ve Saat Seçin", subtitle: self.subTitle ?? "")
+            self.socketTypeOneLabel.text = "\(items.sockets![0].chargeType!) • \(items.sockets![0].socketType!)"
+            self.socketTypeTwoLabel.text = "\(items.sockets?[1].chargeType ?? " ") • \(items.sockets?[1].socketType ?? " ")"
+            self.socketTypeThreeLabel.text = "\(items.sockets?[2].chargeType ?? " ") • \(items.sockets?[2].socketType ?? " ")"
+            self.selectDateTableViewHelper.reloadTable(items: items)
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
+            
+        }
     }
 }

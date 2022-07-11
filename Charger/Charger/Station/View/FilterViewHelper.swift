@@ -69,7 +69,7 @@ class FilterViewHelper {
                 serviceFilter.remove(at: index)
             }
         default:
-            print("default")
+            print("")
         }
     }
     
@@ -92,7 +92,7 @@ class FilterViewHelper {
         case "Wi-Fi":
             serviceFilter.append("Wi-Fi")
         default:
-            print("default")
+            print("")
         }
     }
 }

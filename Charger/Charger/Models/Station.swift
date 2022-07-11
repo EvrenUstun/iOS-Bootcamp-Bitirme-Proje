@@ -27,6 +27,7 @@ struct Socket: Decodable {
     var power: Int?
     var powerUnit: String?
     var socketNumber: Int?
+    var day: Day?
 }
 
 // MARK: - GeoLocation

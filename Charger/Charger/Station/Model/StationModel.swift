@@ -22,7 +22,7 @@ class StationModel{
         }
         
         let queryItems = [
-            URLQueryItem(name: "userID", value: "\(ProjectRepository.user.userId!)"),
+            URLQueryItem(name: "userID", value: "\(ProjectRepository.user?.userId ?? 0)"),
             URLQueryItem(name: "userLatitude", value: latitude),
             URLQueryItem(name: "userLongitude", value: longitude)
         ]
@@ -33,7 +33,7 @@ class StationModel{
         // add headers for the request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
         request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue(ProjectRepository.user.token ?? "", forHTTPHeaderField: "token")
+        request.addValue(ProjectRepository.user?.token ?? "", forHTTPHeaderField: "token")
         
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data, error == nil else {

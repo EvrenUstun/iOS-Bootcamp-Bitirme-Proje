@@ -116,11 +116,13 @@ extension StationTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectDateViewController") as? SelectDateViewController{
+            vc.stationId = self.filteredStations?[indexPath.row].id
             if let currentVC = UIApplication.topViewController() as? StationViewController {
                //the type of currentVC is MyViewController inside the if statement, use it as you want to
                 currentVC.navigationController?.pushViewController(vc, animated: true)
             }
         }
+        ProjectRepository.distanceInKm = filteredStations?[indexPath.row].distanceInKM
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

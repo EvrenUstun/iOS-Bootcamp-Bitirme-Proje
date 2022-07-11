@@ -8,8 +8,9 @@
 import Foundation
 
 struct ProjectRepository {
-    static var user: User = User()
+    static var user: User?
     static var deviceUDID: String?
     static var longitude: Double?
     static var latitude: Double?
+    static var distanceInKm: Double?
 }

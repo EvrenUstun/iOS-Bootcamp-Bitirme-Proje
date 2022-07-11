@@ -14,6 +14,7 @@ class StationViewController: UIViewController {
     @IBOutlet weak var cityResultLabel: UILabel!
     @IBOutlet weak var notFoundLabel: UILabel!
     @IBOutlet weak var againSearchLabel: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     private var stationTableViewHelper: StationTableViewHelper!
     
@@ -67,7 +68,10 @@ class StationViewController: UIViewController {
 extension StationViewController: StationViewModelDelegate {
     func didItemsFetch(_ items: [Station]) {
         DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
             self.stationTableViewHelper.reloadTable(items: items)
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
         }
     }
 }
