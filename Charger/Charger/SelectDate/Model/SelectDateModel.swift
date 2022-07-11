@@ -1,21 +1,28 @@
 //
-//  CityAPI.swift
+//  SelectDateModel.swift
 //  Charger
 //
-//  Created by Evren Ustun on 27.06.2022.
+//  Created by Evren Ustun on 9.07.2022.
 //
 
 import Foundation
 
-class CityModel{
-    
-    func getAllCities(completion: @escaping (Result<[String], Error>) -> Void){
+class SelectDateModel {
+    func formatDate(date: Date) -> String {
+        let formatter = DateFormatter()
         
-        let queryItems = [URLQueryItem(name: "userID", value: "\(ProjectRepository.user?.userId! ?? 0)")]
-        var urlComps = URLComponents(string: Constants.baseUrl + "/provinces")!
+        formatter.dateFormat = "yyyy-MM-dd"
+        return formatter.string(from: date)
+    }
+    
+    func getAvailableAppointments(_ stationId: Int, _ date: Date, completion: @escaping (Result<Appointment, Error>) -> Void){
+        let queryItems = [
+            URLQueryItem(name: "userID", value: "\(ProjectRepository.user?.userId ?? 0)"),
+            URLQueryItem(name: "date", value: formatDate(date: date))
+        ]
+        var urlComps = URLComponents(string: Constants.baseUrl + "/stations/\(stationId)")! // \(stationId)
         urlComps.queryItems = queryItems
         let url = urlComps.url!
-        
         var request = URLRequest(url: url)
         // add headers for the request
         request.addValue("application/json", forHTTPHeaderField: "Content-Type") // change as per server requirements
@@ -36,13 +43,12 @@ class CityModel{
             
             do{
                 // Decode response
-                let cities = try JSONDecoder().decode([String].self, from: data)
-                completion(.success(cities))
+                let availableAppointment = try JSONDecoder().decode(Appointment.self, from: data)
+                completion(.success(availableAppointment))
             }catch{
                 completion(.failure(error))
             }
         }
-        
         task.resume()
     }
 }
