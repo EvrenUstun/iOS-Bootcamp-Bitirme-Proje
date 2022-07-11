@@ -718,11 +718,11 @@
         <scene sceneID="A59-Fu-IPS">
             <objects>
                 <viewController storyboardIdentifier="AppointmentSummaryViewController" id="1l2-k9-nl5" customClass="AppointmentSummaryViewController" customModule="Charger" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="qv1-aN-hrI">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="1228"/>
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="qv1-aN-hrI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qGw-GE-n9L">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGw-GE-n9L">
                                 <rect key="frame" x="0.0" y="44" width="414" height="1037"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtV-Nr-pYw" userLabel="ContainerView">
@@ -1032,7 +1032,7 @@
                                     <constraint firstAttribute="height" constant="1037" id="snN-cn-0j8"/>
                                 </constraints>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V2-d8-Qoz">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V2-d8-Qoz">
                                 <rect key="frame" x="66" y="1121" width="281" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="UZC-cD-uYW"/>
@@ -1046,12 +1046,17 @@
                                     <action selector="loginButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PLR-Ed-MX9"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Cy1-lm-zCC">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="solid-white"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6gX-GF-pI5"/>
                         <color key="backgroundColor" name="Charcoal grey"/>
                         <constraints>
                             <constraint firstItem="qGw-GE-n9L" firstAttribute="trailing" secondItem="6gX-GF-pI5" secondAttribute="trailing" id="HOn-DI-SZT"/>
-                            <constraint firstItem="2V2-d8-Qoz" firstAttribute="top" secondItem="qGw-GE-n9L" secondAttribute="bottom" constant="40" id="M3q-CR-QSI"/>
+                            <constraint firstItem="2V2-d8-Qoz" firstAttribute="top" secondItem="qGw-GE-n9L" secondAttribute="bottom" constant="10" id="M3q-CR-QSI"/>
                             <constraint firstItem="6gX-GF-pI5" firstAttribute="trailing" secondItem="2V2-d8-Qoz" secondAttribute="trailing" constant="67" id="YN8-ac-ebd"/>
                             <constraint firstItem="qGw-GE-n9L" firstAttribute="top" secondItem="6gX-GF-pI5" secondAttribute="top" id="ikF-iq-eCf"/>
                             <constraint firstItem="qGw-GE-n9L" firstAttribute="leading" secondItem="6gX-GF-pI5" secondAttribute="leading" id="oUL-80-aYL"/>
@@ -1061,13 +1066,14 @@
                             <constraint firstItem="2V2-d8-Qoz" firstAttribute="leading" secondItem="6gX-GF-pI5" secondAttribute="leading" constant="66" id="zdb-Qs-ShB"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="414" height="1228"/>
+                    <size key="freeformSize" width="414" height="896"/>
                     <connections>
                         <outlet property="addressLabel" destination="sia-FB-86S" id="PvO-Xu-c0O"/>
                         <outlet property="chargerTypeLabel" destination="tqE-73-Foc" id="RSo-C2-Nyi"/>
                         <outlet property="dateLabel" destination="tF3-zo-0jM" id="NHD-bE-2Rh"/>
                         <outlet property="distanceInKmLabel" destination="EZf-f4-bDt" id="YF4-oN-aVm"/>
                         <outlet property="hourLabel" destination="2e8-OG-5gI" id="hqB-rd-2B3"/>
+                        <outlet property="loadingIndicator" destination="Cy1-lm-zCC" id="Vn1-qV-Hxk"/>
                         <outlet property="notificationScheduleTextField" destination="usa-1b-xSk" id="MHb-s9-x6i"/>
                         <outlet property="notificationSwitch" destination="3fC-oX-IFX" id="B18-fl-um6"/>
                         <outlet property="powerLabel" destination="JW0-Bw-cyO" id="hty-yA-kLf"/>
