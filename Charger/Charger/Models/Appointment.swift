@@ -15,7 +15,6 @@ struct Appointment: Decodable {
     var geoLocation: GeoLocation?
     var services: [String]?
     var stationName: String?
-    
 }
 
 struct ApprovedAppointment: Decodable {
@@ -25,7 +24,9 @@ struct ApprovedAppointment: Decodable {
     var stationCode: String?
     var userID: Int?
     var socketID: Int?
-    
+    var stationName: String?
+    var appointmentID: Int?
+    var hasPassed: Bool?
 }
 
 // MARK: - Day
@@ -40,4 +41,3 @@ struct TimeSlot: Decodable {
     var slot: String?
     var isOccupied: Bool?
 }
-
