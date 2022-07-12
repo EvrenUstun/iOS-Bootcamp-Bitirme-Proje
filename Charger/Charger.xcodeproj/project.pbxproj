@@ -16,7 +16,8 @@
 		B12834DB2868381C007C8BFF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12834DA2868381C007C8BFF /* HomePageViewController.swift */; };
 		B1309FFF286E2FE900B54A7B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1309FFE286E2FE900B54A7B /* AlertManager.swift */; };
 		B139DAFC286A18E9002D3E50 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139DAFB286A18E9002D3E50 /* CityModel.swift */; };
-		B13DFC10287DF94000CAE4F7 /* LogoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DFC0F287DF94000CAE4F7 /* LogoutViewModel.swift */; };
+		B13DFC14287E03C000CAE4F7 /* LogoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DFC13287E03C000CAE4F7 /* LogoutModel.swift */; };
+		B13DFC16287E03D100CAE4F7 /* LogoutviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B13DFC15287E03D100CAE4F7 /* LogoutviewModel.swift */; };
 		B159AC08287C998D008C0DEF /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AC07287C998D008C0DEF /* HomePageViewModel.swift */; };
 		B159AC0A287C999C008C0DEF /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AC09287C999C008C0DEF /* HomePageModel.swift */; };
 		B159AC0D287C9F02008C0DEF /* HomePageCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AC0B287C9F02008C0DEF /* HomePageCustomTableViewCell.swift */; };
@@ -32,7 +33,6 @@
 		B19646A128788E7A00F7AD2D /* SelectDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B196469F28788E7A00F7AD2D /* SelectDateTableViewCell.xib */; };
 		B19CFB082872D434006CE9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B19CFB072872D434006CE9D9 /* Assets.xcassets */; };
 		B1A1351D2868A531008D4DFB /* ProjectRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1351C2868A531008D4DFB /* ProjectRepository.swift */; };
-		B1A135232868A92C008D4DFB /* LogoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A135222868A92C008D4DFB /* LogoutModel.swift */; };
 		B1A69548287351000084F72D /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A69547287351000084F72D /* Assets.swift */; };
 		B1A6954D287354C50084F72D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6954C287354C50084F72D /* UIViewControllerExtension.swift */; };
 		B1A6955328735D590084F72D /* StationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955228735D590084F72D /* StationModel.swift */; };
@@ -71,7 +71,8 @@
 		B12834DA2868381C007C8BFF /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B1309FFE286E2FE900B54A7B /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		B139DAFB286A18E9002D3E50 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
-		B13DFC0F287DF94000CAE4F7 /* LogoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutViewModel.swift; sourceTree = "<group>"; };
+		B13DFC13287E03C000CAE4F7 /* LogoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModel.swift; sourceTree = "<group>"; };
+		B13DFC15287E03D100CAE4F7 /* LogoutviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutviewModel.swift; sourceTree = "<group>"; };
 		B159AC07287C998D008C0DEF /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		B159AC09287C999C008C0DEF /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
 		B159AC0B287C9F02008C0DEF /* HomePageCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCustomTableViewCell.swift; sourceTree = "<group>"; };
@@ -87,7 +88,6 @@
 		B196469F28788E7A00F7AD2D /* SelectDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDateTableViewCell.xib; sourceTree = "<group>"; };
 		B19CFB072872D434006CE9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1A1351C2868A531008D4DFB /* ProjectRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRepository.swift; sourceTree = "<group>"; };
-		B1A135222868A92C008D4DFB /* LogoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutModel.swift; sourceTree = "<group>"; };
 		B1A69547287351000084F72D /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.swift; path = Charger/Theme/Assets.swift; sourceTree = SOURCE_ROOT; };
 		B1A6954C287354C50084F72D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		B1A6955228735D590084F72D /* StationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationModel.swift; sourceTree = "<group>"; };
@@ -172,8 +172,8 @@
 		B1175E3F28685E0600D91661 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				B13DFC0E287DED8C00CAE4F7 /* Model */,
-				B13DFC0D287DED7E00CAE4F7 /* ViewModel */,
+				B13DFC12287E03A600CAE4F7 /* Model */,
+				B13DFC11287E039B00CAE4F7 /* ViewModel */,
 				B11A510B286D7FDF006D5BF0 /* View */,
 			);
 			path = Profile;
@@ -231,18 +231,18 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B13DFC0D287DED7E00CAE4F7 /* ViewModel */ = {
+		B13DFC11287E039B00CAE4F7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B13DFC0F287DF94000CAE4F7 /* LogoutViewModel.swift */,
+				B13DFC15287E03D100CAE4F7 /* LogoutviewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		B13DFC0E287DED8C00CAE4F7 /* Model */ = {
+		B13DFC12287E03A600CAE4F7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				B1A135222868A92C008D4DFB /* LogoutModel.swift */,
+				B13DFC13287E03C000CAE4F7 /* LogoutModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -628,15 +628,15 @@
 				B1D9FCEA287A00B50088CC68 /* SelectDateModel.swift in Sources */,
 				B1A6954D287354C50084F72D /* UIViewControllerExtension.swift in Sources */,
 				B100642E28677FDD00BFD416 /* User.swift in Sources */,
-				B1A135232868A92C008D4DFB /* LogoutModel.swift in Sources */,
 				B1CE37A5287B21BF0022CBEB /* AppointmentSummaryViewController.swift in Sources */,
+				B13DFC14287E03C000CAE4F7 /* LogoutModel.swift in Sources */,
 				B100642B2867786F00BFD416 /* LoginModel.swift in Sources */,
 				B1A69559287369D80084F72D /* StationTableViewHelper.swift in Sources */,
+				B13DFC16287E03D100CAE4F7 /* LogoutviewModel.swift in Sources */,
 				B1B687F0286F01FA00B3398E /* CityViewModel.swift in Sources */,
 				B17314C4286A0C6B005F6A1B /* City.swift in Sources */,
 				B1145D68287777250042B103 /* FilterViewHelper.swift in Sources */,
 				B1DB5EC628675E2C00431F80 /* SceneDelegate.swift in Sources */,
-				B13DFC10287DF94000CAE4F7 /* LogoutViewModel.swift in Sources */,
 				B1A6955328735D590084F72D /* StationModel.swift in Sources */,
 				B1B9CB3A2874BB6B00C70FD5 /* FilterViewController.swift in Sources */,
 				B1D9FCED287A01830088CC68 /* Appointment.swift in Sources */,
