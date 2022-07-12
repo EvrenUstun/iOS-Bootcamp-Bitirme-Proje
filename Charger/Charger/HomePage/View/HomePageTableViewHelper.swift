@@ -60,7 +60,6 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(appointments?.filter { $0.hasPassed == false }.count ?? 0)
         if section == 0 {
             return appointments?.filter { $0.hasPassed == false }.count ?? 0
         }else{
