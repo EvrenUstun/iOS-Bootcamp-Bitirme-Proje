@@ -16,10 +16,15 @@
 		B12834DB2868381C007C8BFF /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B12834DA2868381C007C8BFF /* HomePageViewController.swift */; };
 		B1309FFF286E2FE900B54A7B /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1309FFE286E2FE900B54A7B /* AlertManager.swift */; };
 		B139DAFC286A18E9002D3E50 /* CityModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B139DAFB286A18E9002D3E50 /* CityModel.swift */; };
+		B159AC08287C998D008C0DEF /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AC07287C998D008C0DEF /* HomePageViewModel.swift */; };
+		B159AC0A287C999C008C0DEF /* HomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AC09287C999C008C0DEF /* HomePageModel.swift */; };
+		B159AC0D287C9F02008C0DEF /* HomePageCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B159AC0B287C9F02008C0DEF /* HomePageCustomTableViewCell.swift */; };
+		B159AC0E287C9F02008C0DEF /* HomePageCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B159AC0C287C9F02008C0DEF /* HomePageCustomTableViewCell.xib */; };
 		B17314C2286A0A84005F6A1B /* SelectCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17314C1286A0A84005F6A1B /* SelectCityViewController.swift */; };
 		B17314C4286A0C6B005F6A1B /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17314C3286A0C6B005F6A1B /* City.swift */; };
 		B17CEAE8286E22950045BE16 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17CEAE7286E22950045BE16 /* LoginViewModel.swift */; };
 		B17ECA2D2869D16E005AB4CB /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = B17ECA2C2869D16E005AB4CB /* Constant.swift */; };
+		B18D1C4A287D7B680010D034 /* HomePageTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B18D1C49287D7B680010D034 /* HomePageTableViewHelper.swift */; };
 		B196469828784C4500F7AD2D /* SelectDateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196469728784C4500F7AD2D /* SelectDateViewController.swift */; };
 		B196469D2878552500F7AD2D /* SelectDateTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196469C2878552500F7AD2D /* SelectDateTableViewHelper.swift */; };
 		B19646A028788E7A00F7AD2D /* SelectDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196469E28788E7A00F7AD2D /* SelectDateTableViewCell.swift */; };
@@ -65,10 +70,15 @@
 		B12834DA2868381C007C8BFF /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
 		B1309FFE286E2FE900B54A7B /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		B139DAFB286A18E9002D3E50 /* CityModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityModel.swift; sourceTree = "<group>"; };
+		B159AC07287C998D008C0DEF /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
+		B159AC09287C999C008C0DEF /* HomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageModel.swift; sourceTree = "<group>"; };
+		B159AC0B287C9F02008C0DEF /* HomePageCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageCustomTableViewCell.swift; sourceTree = "<group>"; };
+		B159AC0C287C9F02008C0DEF /* HomePageCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomePageCustomTableViewCell.xib; sourceTree = "<group>"; };
 		B17314C1286A0A84005F6A1B /* SelectCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityViewController.swift; sourceTree = "<group>"; };
 		B17314C3286A0C6B005F6A1B /* City.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		B17CEAE7286E22950045BE16 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		B17ECA2C2869D16E005AB4CB /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		B18D1C49287D7B680010D034 /* HomePageTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageTableViewHelper.swift; sourceTree = "<group>"; };
 		B196469728784C4500F7AD2D /* SelectDateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewController.swift; sourceTree = "<group>"; };
 		B196469C2878552500F7AD2D /* SelectDateTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateTableViewHelper.swift; sourceTree = "<group>"; };
 		B196469E28788E7A00F7AD2D /* SelectDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,6 +160,8 @@
 		B1175E3E28685DF800D91661 /* HomePage */ = {
 			isa = PBXGroup;
 			children = (
+				B159AC06287C9974008C0DEF /* Model */,
+				B159AC05287C995B008C0DEF /* ViewModel */,
 				B11A510A286D7FD3006D5BF0 /* View */,
 			);
 			path = HomePage;
@@ -176,7 +188,10 @@
 		B11A510A286D7FD3006D5BF0 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B159AC0B287C9F02008C0DEF /* HomePageCustomTableViewCell.swift */,
+				B159AC0C287C9F02008C0DEF /* HomePageCustomTableViewCell.xib */,
 				B12834DA2868381C007C8BFF /* HomePageViewController.swift */,
+				B18D1C49287D7B680010D034 /* HomePageTableViewHelper.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,6 +224,22 @@
 			isa = PBXGroup;
 			children = (
 				B100642A2867786F00BFD416 /* LoginModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B159AC05287C995B008C0DEF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B159AC07287C998D008C0DEF /* HomePageViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B159AC06287C9974008C0DEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B159AC09287C999C008C0DEF /* HomePageModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +546,7 @@
 			files = (
 				B1DB5ED028675E2E00431F80 /* LaunchScreen.storyboard in Resources */,
 				B19CFB082872D434006CE9D9 /* Assets.xcassets in Resources */,
+				B159AC0E287C9F02008C0DEF /* HomePageCustomTableViewCell.xib in Resources */,
 				B19646A128788E7A00F7AD2D /* SelectDateTableViewCell.xib in Resources */,
 				B1DB5ECB28675E2C00431F80 /* Main.storyboard in Resources */,
 				B1A6956128737D100084F72D /* StationCustomTableViewCell.xib in Resources */,
@@ -575,6 +607,8 @@
 				B12834DB2868381C007C8BFF /* HomePageViewController.swift in Sources */,
 				B1A6955D287376460084F72D /* StationViewModel.swift in Sources */,
 				B1309FFF286E2FE900B54A7B /* AlertManager.swift in Sources */,
+				B159AC08287C998D008C0DEF /* HomePageViewModel.swift in Sources */,
+				B159AC0A287C999C008C0DEF /* HomePageModel.swift in Sources */,
 				B1E97386287C558F004E3AA3 /* AppointmentSummaryViewModel.swift in Sources */,
 				B1DB5EC828675E2C00431F80 /* LoginViewController.swift in Sources */,
 				B1B687F2286F13B700B3398E /* SelectCityTableViewHelper.swift in Sources */,
@@ -595,10 +629,12 @@
 				B1B9CB3A2874BB6B00C70FD5 /* FilterViewController.swift in Sources */,
 				B1D9FCED287A01830088CC68 /* Appointment.swift in Sources */,
 				B1175E3C2868464600D91661 /* ProfileViewController.swift in Sources */,
+				B159AC0D287C9F02008C0DEF /* HomePageCustomTableViewCell.swift in Sources */,
 				B19646A028788E7A00F7AD2D /* SelectDateTableViewCell.swift in Sources */,
 				B17CEAE8286E22950045BE16 /* LoginViewModel.swift in Sources */,
 				B1A69557287362610084F72D /* StationViewController.swift in Sources */,
 				B139DAFC286A18E9002D3E50 /* CityModel.swift in Sources */,
+				B18D1C4A287D7B680010D034 /* HomePageTableViewHelper.swift in Sources */,
 				B17314C2286A0A84005F6A1B /* SelectCityViewController.swift in Sources */,
 				B1A6955528735ECA0084F72D /* Station.swift in Sources */,
 				B1175E4128685F2000D91661 /* TextFieldExtension.swift in Sources */,

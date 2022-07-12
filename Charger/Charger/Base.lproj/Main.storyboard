@@ -90,59 +90,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Henüz bir randevu oluşturmadınız." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YmI-Di-NPx">
-                                <rect key="frame" x="20" y="344" width="374" height="111"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3VB-IV-Fpa">
-                                <rect key="frame" x="66" y="738" width="281" height="44"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="iconBadge" translatesAutoresizingMaskIntoConstraints="NO" id="eI5-yJ-MrM">
+                                <rect key="frame" x="86.5" y="174" width="240" height="138"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="P7R-Jo-nmR"/>
-                                </constraints>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="RANDEVU OLUŞTUR">
-                                    <backgroundConfiguration key="background" cornerRadius="30">
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </backgroundConfiguration>
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="20"/>
-                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="createAppointmentButtonPressed:" destination="wK8-bQ-jkK" eventType="touchUpInside" id="gJd-mG-vXu"/>
-                                </connections>
-                            </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconBadge" translatesAutoresizingMaskIntoConstraints="NO" id="god-Sb-FkL">
-                                <rect key="frame" x="137" y="179" width="140" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="0tI-0y-P1V"/>
-                                    <constraint firstAttribute="height" constant="80" id="oAV-U7-RzX"/>
+                                    <constraint firstAttribute="width" secondItem="eI5-yJ-MrM" secondAttribute="height" multiplier="40:23" id="AQe-fw-NmC"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Oluşturulan randevular burada listelenir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4HB-5B-shx">
-                                <rect key="frame" x="20" y="475" width="374" height="24"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Henüz bir randevu oluşturmadınız." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLu-gI-9l0">
+                                <rect key="frame" x="73" y="342" width="267" height="146.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="28"/>
+                                <color key="textColor" name="solid-white"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Oluşturulan randevular burada listelenir." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ff1-zi-eqm">
+                                <rect key="frame" x="20" y="518.5" width="374" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <color key="textColor" name="grayscale-gray25"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eer-fZ-zKE">
+                                <rect key="frame" x="67" y="738" width="280" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="nJW-iW-f5u"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="createAppointmentButton">
+                                    <backgroundConfiguration key="background" cornerRadius="30"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="createAppointmentButtonPressed:" destination="wK8-bQ-jkK" eventType="touchUpInside" id="mWS-jO-DA0"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="DLp-7T-tUG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="664"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexTrackingBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Nku-wp-cab"/>
                         <color key="backgroundColor" red="0.1764705926" green="0.19215688110000001" blue="0.22745099660000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" secondItem="YmI-Di-NPx" secondAttribute="trailing" constant="20" id="3DB-PJ-rRZ"/>
-                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="3VB-IV-Fpa" secondAttribute="trailing" constant="67" id="8Dk-xD-yc7"/>
-                            <constraint firstItem="god-Sb-FkL" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Nku-wp-cab" secondAttribute="leading" constant="137" id="XyF-PA-Ua1"/>
-                            <constraint firstItem="4HB-5B-shx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Nku-wp-cab" secondAttribute="leading" constant="20" id="aj2-MI-Iyh"/>
-                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="4HB-5B-shx" secondAttribute="trailing" constant="20" id="esH-if-pTG"/>
-                            <constraint firstItem="Nku-wp-cab" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="3VB-IV-Fpa" secondAttribute="bottom" constant="80" id="gGH-V5-tUc"/>
-                            <constraint firstItem="YmI-Di-NPx" firstAttribute="top" relation="lessThanOrEqual" secondItem="god-Sb-FkL" secondAttribute="bottom" constant="85" id="hGg-IV-xhV"/>
-                            <constraint firstItem="3VB-IV-Fpa" firstAttribute="leading" relation="lessThanOrEqual" secondItem="Nku-wp-cab" secondAttribute="leading" constant="66" id="hky-sU-48U"/>
-                            <constraint firstItem="4HB-5B-shx" firstAttribute="top" relation="lessThanOrEqual" secondItem="YmI-Di-NPx" secondAttribute="bottom" constant="20" id="mfF-Ye-s7p"/>
-                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="god-Sb-FkL" secondAttribute="trailing" constant="137" id="oar-0a-l9a"/>
-                            <constraint firstItem="3VB-IV-Fpa" firstAttribute="top" relation="lessThanOrEqual" secondItem="4HB-5B-shx" secondAttribute="bottom" constant="239" id="uDv-Xc-nqW"/>
-                            <constraint firstItem="YmI-Di-NPx" firstAttribute="leading" secondItem="Nku-wp-cab" secondAttribute="leading" constant="20" id="yL6-rY-PYp"/>
-                            <constraint firstItem="god-Sb-FkL" firstAttribute="top" relation="lessThanOrEqual" secondItem="Nku-wp-cab" secondAttribute="top" constant="135" id="yzJ-Bd-vhm"/>
+                            <constraint firstItem="ff1-zi-eqm" firstAttribute="top" relation="lessThanOrEqual" secondItem="CLu-gI-9l0" secondAttribute="bottom" constant="30" id="0gr-9B-DKy"/>
+                            <constraint firstItem="DLp-7T-tUG" firstAttribute="trailing" secondItem="Nku-wp-cab" secondAttribute="trailing" id="7qz-1o-2ch"/>
+                            <constraint firstItem="ff1-zi-eqm" firstAttribute="leading" secondItem="Nku-wp-cab" secondAttribute="leading" constant="20" id="Gqy-KX-9Ue"/>
+                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" secondItem="CLu-gI-9l0" secondAttribute="trailing" constant="74" id="GwH-so-u2T"/>
+                            <constraint firstItem="DLp-7T-tUG" firstAttribute="top" secondItem="Nku-wp-cab" secondAttribute="top" id="I2y-kF-y71"/>
+                            <constraint firstItem="eI5-yJ-MrM" firstAttribute="leading" secondItem="Nku-wp-cab" secondAttribute="leading" constant="86.5" id="Ixp-6g-Fkf"/>
+                            <constraint firstItem="eer-fZ-zKE" firstAttribute="leading" secondItem="Nku-wp-cab" secondAttribute="leading" constant="67" id="OYR-6v-EUw"/>
+                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" secondItem="eI5-yJ-MrM" secondAttribute="trailing" constant="87.5" id="PIU-nL-fHz"/>
+                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" secondItem="eer-fZ-zKE" secondAttribute="trailing" constant="67" id="QEi-eN-pDj"/>
+                            <constraint firstItem="CLu-gI-9l0" firstAttribute="leading" secondItem="Nku-wp-cab" secondAttribute="leading" constant="73" id="Voy-Ek-Cqr"/>
+                            <constraint firstItem="eI5-yJ-MrM" firstAttribute="top" relation="lessThanOrEqual" secondItem="Nku-wp-cab" secondAttribute="top" constant="130" id="bs8-aU-6v6"/>
+                            <constraint firstItem="DLp-7T-tUG" firstAttribute="leading" secondItem="Nku-wp-cab" secondAttribute="leading" id="jx5-i6-KRe"/>
+                            <constraint firstItem="eer-fZ-zKE" firstAttribute="top" relation="lessThanOrEqual" secondItem="ff1-zi-eqm" secondAttribute="bottom" constant="194" id="n74-DW-7D5"/>
+                            <constraint firstItem="Nku-wp-cab" firstAttribute="trailing" secondItem="ff1-zi-eqm" secondAttribute="trailing" constant="20" id="oBO-mx-6Dl"/>
+                            <constraint firstItem="Nku-wp-cab" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="eer-fZ-zKE" secondAttribute="bottom" constant="80" id="scH-7E-PjX"/>
+                            <constraint firstItem="CLu-gI-9l0" firstAttribute="top" relation="lessThanOrEqual" secondItem="eI5-yJ-MrM" secondAttribute="bottom" constant="30" id="uqy-vc-bAc"/>
+                            <constraint firstItem="eer-fZ-zKE" firstAttribute="top" secondItem="DLp-7T-tUG" secondAttribute="bottom" constant="30" id="zAS-Mf-tGO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Randevular" id="PcA-pa-uHw">
@@ -152,13 +158,17 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="createAppointmentButton" destination="3VB-IV-Fpa" id="6pA-hT-hAB"/>
+                        <outlet property="appointmentTableView" destination="DLp-7T-tUG" id="imf-Sh-7oe"/>
+                        <outlet property="createAppointmentButton" destination="eer-fZ-zKE" id="Gdo-wi-Iro"/>
+                        <outlet property="homePageAppIconView" destination="eI5-yJ-MrM" id="mKj-dd-Adk"/>
+                        <outlet property="listAppointmentLabel" destination="ff1-zi-eqm" id="Bj4-OB-Qio"/>
+                        <outlet property="noAppointmentLabel" destination="CLu-gI-9l0" id="2g9-51-OPa"/>
                         <outlet property="profileButton" destination="cWN-yE-7t9" id="u8m-By-ad7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nfb-mW-6RR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="119" y="-326"/>
+            <point key="canvasLocation" x="118.84057971014494" y="-326.11607142857139"/>
         </scene>
         <!--Select City View Controller-->
         <scene sceneID="YVF-z3-YJz">
@@ -723,7 +733,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qGw-GE-n9L">
-                                <rect key="frame" x="0.0" y="44" width="414" height="1037"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="735"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CtV-Nr-pYw" userLabel="ContainerView">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="1037"/>
@@ -1033,7 +1043,7 @@
                                 </constraints>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2V2-d8-Qoz">
-                                <rect key="frame" x="66" y="1121" width="281" height="43"/>
+                                <rect key="frame" x="66" y="789" width="281" height="43"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="43" id="UZC-cD-uYW"/>
                                 </constraints>
@@ -1223,6 +1233,7 @@
     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>
         <image name="approveAppointmentButton" width="240" height="44"/>
+        <image name="createAppointmentButton" width="240" height="44"/>
         <image name="filterButton" width="240" height="44"/>
         <image name="iconBadge" width="130" height="138"/>
         <image name="loginButton" width="240" height="44"/>
