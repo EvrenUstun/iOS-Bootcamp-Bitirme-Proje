@@ -42,7 +42,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         
         setupUI()
     }
-
+    
     func setupUI() {
         
         // Gradient background settings.
@@ -73,7 +73,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         loginButton.setImage(UIImage(asset: Asset.loginButton), for: .normal)
         
     }
-
+    
     // MARK: - func for location
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
@@ -117,7 +117,7 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
 
 extension LoginViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-           self.view.endEditing(true)
-           return false
-       }
+        self.view.endEditing(true)
+        return false
+    }
 }

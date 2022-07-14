@@ -44,7 +44,7 @@ class HomePageViewController: UIViewController {
         
         viewModel.delegate = self
         
-        homePageTableViewHelper = .init(with: appointmentTableView)
+        homePageTableViewHelper = .init(with: appointmentTableView, view: self.view)
     }
     
     @objc

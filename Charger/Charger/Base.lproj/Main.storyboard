@@ -6,6 +6,7 @@
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -185,11 +186,11 @@
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <searchBar contentMode="redraw" barStyle="black" placeholder="Şehir Ara" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-7V-0IU">
+                            <searchBar contentMode="redraw" placeholder="Şehir Ara" translatesAutoresizingMaskIntoConstraints="NO" id="4ct-7V-0IU">
                                 <rect key="frame" x="0.0" y="44" width="414" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" red="0.2627450980392157" green="0.28627450980392155" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="solid-white"/>
+                                <color key="barTintColor" name="Charcoal grey"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" id="8aA-CW-dSK">
@@ -245,25 +246,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="kF3-sC-wZn">
-                                <rect key="frame" x="0.0" y="127" width="414" height="769"/>
+                                <rect key="frame" x="0.0" y="161.5" width="414" height="734.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="separatorColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
-                            <searchBar contentMode="redraw" barStyle="black" placeholder="İstasyon Ara" translatesAutoresizingMaskIntoConstraints="NO" id="27b-VL-0wz">
+                            <searchBar contentMode="redraw" placeholder="İstasyon Ara" translatesAutoresizingMaskIntoConstraints="NO" id="27b-VL-0wz">
                                 <rect key="frame" x="0.0" y="44" width="414" height="51"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="barTintColor" red="0.26274509800000001" green="0.28627450980000002" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" name="solid-white"/>
+                                <color key="barTintColor" name="Charcoal grey"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT1-eg-CFY">
-                                <rect key="frame" x="20" y="111" width="374" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Aramanız ile eşleşen bir sonuç bulunamadı." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" id="ynC-ff-qOI">
                                 <rect key="frame" x="0.0" y="417" width="414" height="62"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -283,25 +278,59 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="solid-white"/>
                             </activityIndicatorView>
+                            <collectionView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="WeY-qG-uKi">
+                                <rect key="frame" x="0.0" y="95" width="414" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="fKz-nb-uJ8"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3R5-vb-NJZ">
+                                    <size key="itemSize" width="131" height="72"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="7qY-3X-UJF">
+                                        <rect key="frame" x="0.0" y="-11" width="131" height="72"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9PJ-fv-G4s">
+                                            <rect key="frame" x="0.0" y="0.0" width="131" height="72"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="131" height="72"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zT1-eg-CFY">
+                                <rect key="frame" x="20" y="153" width="374" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="drF-w7-bcI"/>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="27b-VL-0wz" firstAttribute="trailing" secondItem="drF-w7-bcI" secondAttribute="trailing" id="0uM-ek-68z"/>
+                            <constraint firstItem="kF3-sC-wZn" firstAttribute="top" secondItem="zT1-eg-CFY" secondAttribute="bottom" constant="8.5" id="4tT-EE-ywZ"/>
                             <constraint firstItem="kF3-sC-wZn" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="CgQ-xZ-8Hr"/>
                             <constraint firstItem="zT1-eg-CFY" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" constant="20" id="DeZ-C5-Swq"/>
+                            <constraint firstItem="WeY-qG-uKi" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="Ggf-gI-G2W"/>
+                            <constraint firstItem="WeY-qG-uKi" firstAttribute="trailing" secondItem="drF-w7-bcI" secondAttribute="trailing" id="JbJ-7b-49A"/>
+                            <constraint firstItem="zT1-eg-CFY" firstAttribute="top" secondItem="WeY-qG-uKi" secondAttribute="bottom" constant="8" id="Kp7-QU-0nb"/>
+                            <constraint firstItem="WeY-qG-uKi" firstAttribute="top" secondItem="27b-VL-0wz" secondAttribute="bottom" id="MOT-Q2-Wbk"/>
                             <constraint firstItem="27b-VL-0wz" firstAttribute="top" secondItem="drF-w7-bcI" secondAttribute="top" id="Nst-L8-4qu"/>
-                            <constraint firstItem="zT1-eg-CFY" firstAttribute="top" secondItem="27b-VL-0wz" secondAttribute="bottom" constant="16" id="RMm-ai-XTi"/>
                             <constraint firstAttribute="bottom" secondItem="kF3-sC-wZn" secondAttribute="bottom" id="WXr-wY-ObP"/>
                             <constraint firstItem="drF-w7-bcI" firstAttribute="trailing" secondItem="zT1-eg-CFY" secondAttribute="trailing" constant="20" id="fPk-tf-ExS"/>
                             <constraint firstItem="27b-VL-0wz" firstAttribute="leading" secondItem="drF-w7-bcI" secondAttribute="leading" id="vG0-qU-Een"/>
                             <constraint firstItem="kF3-sC-wZn" firstAttribute="trailing" secondItem="drF-w7-bcI" secondAttribute="trailing" id="x8C-bN-fFy"/>
-                            <constraint firstItem="kF3-sC-wZn" firstAttribute="top" secondItem="zT1-eg-CFY" secondAttribute="bottom" constant="16" id="yb0-aG-2mh"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="againSearchLabel" destination="0Tm-YJ-OE8" id="6jt-dI-CDh"/>
                         <outlet property="cityResultLabel" destination="zT1-eg-CFY" id="i5B-3A-Fyv"/>
+                        <outlet property="filterCollectionView" destination="WeY-qG-uKi" id="WAe-oN-zar"/>
                         <outlet property="loadingIndicator" destination="7e4-P9-0yE" id="UoH-Jq-sjs"/>
                         <outlet property="notFoundLabel" destination="ynC-ff-qOI" id="8La-Uk-ukL"/>
                         <outlet property="stationSearchbar" destination="27b-VL-0wz" id="6ON-si-XN7"/>
@@ -310,7 +339,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2A7-iX-FKW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1648" y="358"/>
+            <point key="canvasLocation" x="1647.826086956522" y="357.58928571428572"/>
         </scene>
         <!--Select Date View Controller-->
         <scene sceneID="4VU-Ui-nj6">
