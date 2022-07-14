@@ -11,15 +11,20 @@ import UIKit
 class HomePageTableViewHelper: NSObject {
     
     weak var appointmentTableView: UITableView!
+    weak var view: UIView!
     
     private var appointments: [ApprovedAppointment]?
     private var pastAppointments: [ApprovedAppointment]?
     private var availableAppointments: [ApprovedAppointment]?
-    
+    var appointmentId: Int?
+    var row: Int!
+    var popup: Popup!
+    var popupDescription: String!
     private let viewModel = HomePageViewModel()
     
     init(
-        with appointmentTableView: UITableView
+        with appointmentTableView: UITableView,
+        view: UIView
     ) {
         super.init()
         
@@ -27,6 +32,10 @@ class HomePageTableViewHelper: NSObject {
         
         self.appointmentTableView?.delegate = self
         self.appointmentTableView?.dataSource = self
+        
+        self.view = view
+        
+        self.popup = Popup(frame: self.view.frame)
         
         registerCell()
     }
@@ -44,19 +53,50 @@ class HomePageTableViewHelper: NSObject {
     
     func formatDate(date: Date) -> String {
         let formatter = DateFormatter()
-        
         formatter.dateFormat = "yyyy-MM-dd"
+        
         return formatter.string(from: date)
     }
 }
 
 extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     
-    @objc
-    func didTrashIconTapped(_ sender: UITapGestureRecognizer){
-        guard let appointmentId = sender.view?.layer.value(forKey: "appointmentID") as? Int else { return }
+    func deleteItem(_ appointmentId: Int){
         viewModel.deleteAppointment(appointmentId)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadData"), object: nil)
+        self.popup.removeFromSuperview()
+    }
+    
+    @objc
+    func didDeleteButtonTapped(){
+        deleteItem(appointmentId ?? 0)
+    }
+    
+    @objc
+    func didCloseButtonTapped(){
+        self.popup.removeFromSuperview()
+    }
+    
+    @objc
+    func didTrashIconTapped(){
+        deleteItem(appointmentId ?? 0)
+    }
+    
+    @objc
+    func didTrashIconTapped(_ sender: UITapGestureRecognizer){
+        appointmentId = sender.view?.layer.value(forKey: "appointmentID") as? Int
+        row = sender.view?.layer.value(forKey: "row") as! Int
+        
+        popup.firstButton.setImage(Asset.cancelAppointmentButton.image, for: .normal)
+        popup.secondButton.setImage(Asset.cancelButton.image, for: .normal)
+        
+        let description: String = "\(availableAppointments?[row].stationName ?? "") istasyonundaki \(availableAppointments?[row].date ?? "") saat  \(availableAppointments?[row].time ?? "") randevunuz iptal edilecektir."
+        self.popup.popupTitleLabel?.text = "denenejn"
+        self.popup.popupDescriptionLabel?.text = description
+        
+        self.popup.firstButton.addTarget(self, action: #selector(didDeleteButtonTapped), for: .touchUpInside)
+        self.popup.secondButton.addTarget(self, action: #selector(didCloseButtonTapped), for: .touchUpInside)
+        self.view.addSubview(popup)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -68,26 +108,26 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         if indexPath.section == 0 {
             let cell = appointmentTableView.dequeueReusableCell(withIdentifier: "HomePageCustomTableViewCell", for: indexPath) as! HomePageCustomTableViewCell
             cell.trashIcon.isHidden = false
             
             appointmentsPrepareUI(cell, availableAppointments, indexPath)
-
+            
             let tap = UITapGestureRecognizer(target: self, action: #selector(didTrashIconTapped(_:)))
             tap.numberOfTapsRequired = 1
             tap.numberOfTouchesRequired = 1
             cell.trashIcon.addGestureRecognizer(tap)
             cell.trashIcon.layer.setValue(availableAppointments?[indexPath.row].appointmentID, forKey: "appointmentID")
-            return cell
+            cell.trashIcon.layer.setValue(indexPath.row, forKey: "row")
             
+            return cell
         }else {
             let cell = appointmentTableView.dequeueReusableCell(withIdentifier: "HomePageCustomTableViewCell", for: indexPath) as! HomePageCustomTableViewCell
             
             cell.trashIcon.isHidden = true
             appointmentsPrepareUI(cell, pastAppointments, indexPath)
-
+            
             return cell
         }
     }
@@ -127,9 +167,21 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 0 {
-            return "GÜNCEL RANDEVULAR"
+            if availableAppointments?.count ?? 0 > 0 {
+                return "GÜNCEL RANDEVULAR"
+            }
+            return ""
         }else {
-            return "GEÇMİŞ RANDEVULAR"
+            if pastAppointments?.count ?? 0 > 0 {
+                return "GEÇMİŞ RANDEVULAR"
+            }
+            return ""
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        if let view = view as? UITableViewHeaderFooterView {
+            view.textLabel?.textColor = Asset.grayscaleGray25.color
         }
     }
 }
