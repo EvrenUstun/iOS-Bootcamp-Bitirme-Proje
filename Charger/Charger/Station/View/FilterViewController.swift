@@ -55,11 +55,11 @@ class FilterViewController: UIViewController {
         
         navigationItem.rightBarButtonItem = clearButton
         navigationItem.rightBarButtonItem?.tintColor = Asset.solidWhite.color
-        
     }
     
     @objc
     func didClearButtonTapped(){
+        distance = 15
         distanceSlider.value = distanceSlider.maximumValue
         filterViewHelper.switchButtonStyle(chargerTypeACButton, true)
         filterViewHelper.switchButtonStyle(chargerTypeDCButton, true)
