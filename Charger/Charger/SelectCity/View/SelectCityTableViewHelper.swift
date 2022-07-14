@@ -47,7 +47,7 @@ class SelectCityTableViewHelper: NSObject {
         
         notFoundLabel.isHidden = false
         againSearchLabel.isHidden = false
-
+        
         notFoundLabel.frame = CGRect(x: (screenWidth/4-50) , y: screenHeight/4, width: self.notFoundLabel.bounds.size.width, height: self.notFoundLabel.bounds.size.height) // x , y, width , height
         notFoundLabel.textAlignment = .center
         notFoundLabel.sizeToFit()
@@ -88,7 +88,7 @@ extension SelectCityTableViewHelper: UITableViewDelegate, UITableViewDataSource 
             vc.city = (filteredCities?[indexPath.row])!
             
             if let currentVC = UIApplication.topViewController() as? SelectCityViewController {
-               //the type of currentVC is MyViewController inside the if statement, use it as you want to
+                //the type of currentVC is MyViewController inside the if statement, use it as you want to
                 currentVC.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -104,8 +104,10 @@ extension SelectCityTableViewHelper: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if(searchText == ""){
+            citySearchBar.searchTextField.layer.borderColor = Asset.grayscaleGray25.color.cgColor
             filteredCities = cities
         }else {
+            citySearchBar.searchTextField.layer.borderColor = Asset.mainPrimary.color.cgColor
             filteredCities = cities?.filter {$0.lowercased().contains(searchText.lowercased())}
         }
         
@@ -115,6 +117,7 @@ extension SelectCityTableViewHelper: UISearchBarDelegate {
         
         // if statements for city not found
         if filteredCities?.count == 0 {
+            citySearchBar.searchTextField.layer.borderColor = Asset.stateSecurityOn.color.cgColor
             notFoundLabelSettings()
             cityTableView.reloadData()
         }

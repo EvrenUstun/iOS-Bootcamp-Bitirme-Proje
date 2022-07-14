@@ -28,13 +28,22 @@ class SelectCityViewController: UIViewController {
         // Gradient background settings.
         prepareGradientBackground()
         
+        // search bar settings
+        citySearchBar.searchTextField.layer.cornerRadius = 18
+        citySearchBar.searchTextField.layer.masksToBounds = false
+        citySearchBar.searchTextField.layer.backgroundColor = Asset.dark.color.cgColor
+        citySearchBar.searchTextField.layer.borderColor = Asset.grayscaleGray25.color.cgColor
+        citySearchBar.searchTextField.layer.borderWidth = 1
+        citySearchBar.searchTextField.textColor = Asset.solidWhite.color
+        citySearchBar.searchTextField.leftView?.tintColor = .white
+        
         notFoundLabel.isHidden = true
         againSearchLabel.isHidden = true
         
         self.title = "Şehir Seçin"
         
         selectCityTableViewHelper = .init(with: cityTableView, citySearchBar: citySearchBar, notFoundLabel: notFoundLabel, againSearchLabel: againSearchLabel)
-
+        
         viewModel.delegate = self
         
         viewModel.getCities()

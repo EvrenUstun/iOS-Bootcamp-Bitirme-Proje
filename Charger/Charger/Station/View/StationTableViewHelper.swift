@@ -113,19 +113,17 @@ extension StationTableViewHelper: UITableViewDelegate, UITableViewDataSource {
         return 200
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SelectDateViewController") as? SelectDateViewController{
             vc.stationId = self.filteredStations?[indexPath.row].id
             if let currentVC = UIApplication.topViewController() as? StationViewController {
-               //the type of currentVC is MyViewController inside the if statement, use it as you want to
+                //the type of currentVC is MyViewController inside the if statement, use it as you want to
                 currentVC.navigationController?.pushViewController(vc, animated: true)
             }
         }
         ProjectRepository.distanceInKm = filteredStations?[indexPath.row].distanceInKM
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
     
     func getCleanKm(_ km: Double?) -> String {
         if km != nil{
@@ -139,8 +137,10 @@ extension StationTableViewHelper: UITableViewDelegate, UITableViewDataSource {
 extension StationTableViewHelper: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if(searchText == ""){
+            stationSearchbar.searchTextField.layer.borderColor = Asset.grayscaleGray25.color.cgColor
             filteredStations = stations
         }else {
+            stationSearchbar.searchTextField.layer.borderColor = Asset.mainPrimary.color.cgColor
             filteredStations = stations?.filter {$0.stationName!.lowercased().contains(searchText.lowercased())}
         }
         stationTableView.reloadData()
@@ -151,6 +151,7 @@ extension StationTableViewHelper: UISearchBarDelegate {
         
         // if statements for city not found
         if filteredStations?.count == 0 {
+            stationSearchbar.searchTextField.layer.borderColor = Asset.stateSecurityOn.color.cgColor
             notFoundLabelSettings()
             stationTableView.reloadData()
         }
