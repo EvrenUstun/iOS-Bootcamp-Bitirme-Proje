@@ -8,15 +8,14 @@
 import UIKit
 
 class SelectDateTableViewHelper: NSObject {
-    
-    var numbers: [String] = ["1", "2" ,"3"]
-    
+        
     weak var socketOneTableView: UITableView!
     weak var socketTwoTableView: UITableView!
     weak var socketThreeTableView: UITableView!
     var previousIndexPath: IndexPath?
-    var test: NSMutableArray = []
-    
+    var firsListSelected: [Int] = []
+    var secondListSelected: [Int] = []
+    var thirdListSelected: [Int] = []
     var socketNumber: Int = 0
     var hour: String = ""
     
@@ -77,36 +76,40 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
         
         if tableView.tag == 0 {
             if let cell = socketOneTableView.dequeueReusableCell(withIdentifier: "SelectDateTableViewCell", for: indexPath) as? SelectDateTableViewCell{
-                cellStyle(cell)
-                cell.hourLabel.text = appointment?.sockets?[0].day?.timeSlots?[indexPath.row].slot ?? ""
-                if appointment?.sockets?[0].day?.timeSlots?[indexPath.row].isOccupied ?? false{
-                    cell.isUserInteractionEnabled = false
-                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
-                }
-                cell.tag = indexPath.row
-                test.addObjects(from: [cell])
+                
+                tableViewSettings(cell, indexPath, 0)
+                firsListSelected.contains(indexPath.row) ?  selectedCellStyle(cell, indexPath) : resetCellStyle(cell)
+                
+//                let date = Date()
+//                let calendar = Calendar.current
+//                let hour = calendar.component(.hour, from: date)
+                
+//                let saat = cell.hourLabel.text?.components(separatedBy: ":")
+//                let tamSaat = Int(saat?[0] ?? "") ?? 0
+//                print("Saat: \(saat?[0] ?? "" )")
+            
+//                if hour > tamSaat {
+//                    cell.isUserInteractionEnabled = false
+//                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
+//                    print("küçükkkkk")
+//                }
+
                 return cell
             }
         }else if tableView.tag == 1 {
             if let cell = socketTwoTableView.dequeueReusableCell(withIdentifier: "SelectDateTableViewCell2", for: indexPath) as? SelectDateTableViewCell{
-                cellStyle(cell)
-                cell.hourLabel.text = appointment?.sockets?[1].day?.timeSlots?[indexPath.row].slot ?? ""
-                if appointment?.sockets?[1].day?.timeSlots?[indexPath.row].isOccupied ?? false{
-                    cell.isUserInteractionEnabled = false
-                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
-                }
-                cell.tag = indexPath.row
+
+                tableViewSettings(cell, indexPath, 1)
+                secondListSelected.contains(indexPath.row) ?  selectedCellStyle(cell, indexPath) : resetCellStyle(cell)
+
                 return cell
             }
         }else {
             if let cell = socketThreeTableView.dequeueReusableCell(withIdentifier: "SelectDateTableViewCell3", for: indexPath) as? SelectDateTableViewCell{
-                cellStyle(cell)
-                cell.hourLabel.text = appointment?.sockets?[2].day?.timeSlots?[indexPath.row].slot ?? ""
-                if appointment?.sockets?[2].day?.timeSlots?[indexPath.row].isOccupied ?? false{
-                    cell.isUserInteractionEnabled = false
-                    cell.hourLabel.textColor = Asset.grayscaleGray25.color
-                }
-                cell.tag = indexPath.row
+
+                tableViewSettings(cell, indexPath, 2)
+                thirdListSelected.contains(indexPath.row) ?  selectedCellStyle(cell, indexPath) : resetCellStyle(cell)
+
                 return cell
             }
         }
@@ -127,58 +130,74 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if tableView.tag == 0 {
-            print("1")
-            let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
             
-            if previousIndexPath != nil {
-                let previousCell = tableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                let previousCell2 = socketTwoTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                let previousCell3 = socketThreeTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                
-                resetCellStyle(previousCell)
-                resetCellStyle(previousCell2)
-                resetCellStyle(previousCell3)
+            if firsListSelected.contains(indexPath.row) {
+                firsListSelected = firsListSelected.filter{$0 != indexPath.row}
+            } else {
+                removeListAndReloadTable()
+                firsListSelected.append(indexPath.row)
             }
-            previousIndexPath = indexPath
-            selectedCellStyle(cell, indexPath)
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            
+            let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
+
             socketNumber = (appointment?.sockets![0].socketNumber)!
             hour = cell.hourLabel.text ?? ""
             
         }else if tableView.tag == 1 {
-            print("2")
+            
+            if secondListSelected.contains(indexPath.row) {
+                secondListSelected = secondListSelected.filter{$0 != indexPath.row}
+            } else {
+                removeListAndReloadTable()
+                secondListSelected.append(indexPath.row)
+               
+            }
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+
             let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
 
-            if previousIndexPath != nil {
-                let previousCell = tableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                let previousCell2 = socketOneTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                let previousCell3 = socketThreeTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                
-                resetCellStyle(previousCell)
-                resetCellStyle(previousCell2)
-                resetCellStyle(previousCell3)
-            }
-            previousIndexPath = indexPath
-            selectedCellStyle(cell, indexPath)
             socketNumber = (appointment?.sockets![1].socketNumber)!
             hour = cell.hourLabel.text ?? ""
         }else {
-            print("3")
+            
+            if thirdListSelected.contains(indexPath.row) {
+                thirdListSelected = thirdListSelected.filter{$0 != indexPath.row}
+            } else {
+                removeListAndReloadTable()
+                thirdListSelected.append(indexPath.row)
+            }
+                tableView.reloadRows(at: [indexPath], with: .automatic)
+            
             let cell = tableView.cellForRow(at: indexPath) as! SelectDateTableViewCell
 
-            if previousIndexPath != nil {
-//                print(previousIndexPath)
-                let previousCell2 = socketOneTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                let previousCell3 = socketTwoTableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                let previousCell = tableView.cellForRow(at: previousIndexPath!) as! SelectDateTableViewCell
-                
-                resetCellStyle(previousCell)
-                resetCellStyle(previousCell2)
-                resetCellStyle(previousCell3)
-            }
-            previousIndexPath = indexPath
-            selectedCellStyle(cell, indexPath)
             socketNumber = (appointment?.sockets![2].socketNumber)!
             hour = cell.hourLabel.text ?? ""
+        }
+        
+    }
+    
+    private func tableViewSettings(_ cell: SelectDateTableViewCell, _ indexPath: IndexPath, _ tableViewNumber: Int) {
+        cellStyle(cell)
+        
+        cell.hourLabel.text = appointment?.sockets?[tableViewNumber].day?.timeSlots?[indexPath.row].slot ?? ""
+        
+        if appointment?.sockets?[tableViewNumber].day?.timeSlots?[indexPath.row].isOccupied ?? false{
+            cell.isUserInteractionEnabled = false
+            cell.hourLabel.textColor = Asset.grayscaleGray25.color
+        }
+        
+    }
+    
+    private func removeListAndReloadTable(){
+        firsListSelected.removeAll()
+        secondListSelected.removeAll()
+        thirdListSelected.removeAll()
+        
+        DispatchQueue.main.async {
+            self.socketOneTableView.reloadData()
+            self.socketTwoTableView.reloadData()
+            self.socketThreeTableView.reloadData()
         }
     }
     
@@ -196,7 +215,6 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
     }
     
     private func selectedCellStyle(_ cell: SelectDateTableViewCell, _ indexPath: IndexPath){
-//        previousIndexPath = indexPath
         cell.contentView.backgroundColor = Asset.dark.color
         cell.containerView.backgroundColor = Asset.dark.color
         cell.containerView.layer.borderColor = Asset.mainPrimary.color.cgColor
