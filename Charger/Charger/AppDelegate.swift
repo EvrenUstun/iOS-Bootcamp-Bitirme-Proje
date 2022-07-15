@@ -36,6 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         appearance.backgroundColor = Asset.charcoalGrey.color
         appearance.titleTextAttributes = attrs
         
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        
         UIBarButtonItem.appearance().setTitleTextAttributes(attrs, for: .normal)
         return true
     }

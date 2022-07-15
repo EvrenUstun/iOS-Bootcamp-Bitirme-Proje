@@ -10,7 +10,6 @@ import UIKit
 class SelectDateViewController: UIViewController {
     
     @IBOutlet weak var datePickerTextField: UITextField!
-    
     @IBOutlet weak var socketOneLabel: UILabel!
     @IBOutlet weak var socketTwoLabel: UILabel!
     @IBOutlet weak var socketThreeLabel: UILabel!
@@ -26,26 +25,17 @@ class SelectDateViewController: UIViewController {
     var stationId: Int!
     private var subTitle: String?
     private var appointment: Appointment!
-    
+    var popup: Popup!
     private var selectDateTableViewHelper: SelectDateTableViewHelper!
-    
     let datePicker = UIDatePicker()
-    
     private let viewModel = SelectDateViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
     }
-    override func viewDidAppear(_ animated: Bool) {
-
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-
-    }
-    
-    func setupUI() {
+        
+    private func setupUI() {
         // Gradient background settings.
         prepareGradientBackground()
         
@@ -59,40 +49,96 @@ class SelectDateViewController: UIViewController {
         ]
         NSLayoutConstraint.activate(constraints)
         
-        datePickerTextField.textAlignment = .right 
-        
-        selectDateTableViewHelper = .init(with: socketOneTableView, socketTwoTableView: socketTwoTableView, socketThreeTableView: socketThreeTableView)
-
+        // date picker settings.
+        datePickerTextField.textAlignment = .right
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: " ", style: .plain, target: nil, action: nil)
         self.navigationItem.backBarButtonItem?.tintColor = Asset.grayscaleGray25.color
-        
         createDatePicker()
+        
         viewModel.delegate = self
+        viewModel.getAvailableAppointments(stationId, datePicker.date)
+        
+        selectDateTableViewHelper = .init(with: socketOneTableView, socketTwoTableView: socketTwoTableView, socketThreeTableView: socketThreeTableView)
+    }
+
+    @objc
+    func doneTapped(){
+        datePickerTextField.text = formatDate(date: datePicker.date)
+        
+        viewModel.getAvailableAppointments(stationId, datePicker.date)
+        //        selectDateTableViewHelper.reloadTable(items: appointment)
+        self.view.endEditing(true)
+    }
+    
+    @objc
+    func dateChange(datepicker: UIDatePicker){
+        datePickerTextField.text = formatDate(date: datepicker.date)
+    }
+    
+    @objc
+    func didEditButtonTapped(){
+        self.popup.removeFromSuperview()
+    }
+    
+    @objc
+    func didSelectTodayButtonTapped(){
+        datePicker.date = Date.now
+        datePickerTextField.text = formatDate(date: Date.now)
+        self.popup.removeFromSuperview()
         viewModel.getAvailableAppointments(stationId, datePicker.date)
     }
     
-    func setTitle(title:String, subtitle:String) -> UIView {
+    @IBAction func continueButtonTapped(_ sender: Any) {
+        
+        let now = Date()
+        let order = Calendar.current.compare(now, to: datePicker.date, toGranularity: .day)
+        
+        let hourString = selectDateTableViewHelper.hour.components(separatedBy: ":")
+        let separatedHour = Int(hourString[0] ) ?? 0
+        
+        let currentHour = Calendar.current.component(.hour, from: now)
+        
+        if order == .orderedDescending || currentHour >= separatedHour{
+            self.popup = Popup(frame: self.view.frame)
+            self.popup.firstButton.setImage(Asset.editButton.image, for: .normal)
+            self.popup.secondButton.setImage(Asset.selectTodayButton.image, for: .normal)
+            self.popup.firstButton?.addTarget(self, action: #selector(self.didEditButtonTapped), for: .touchUpInside)
+            self.popup.secondButton?.addTarget(self, action: #selector(self.didSelectTodayButtonTapped), for: .touchUpInside)
+            
+            self.view.addSubview(self.popup)
+        }else {
+            if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AppointmentSummaryViewController") as? AppointmentSummaryViewController{
+                vc.appointmentDate = datePicker.date
+                vc.stationId = stationId
+                vc.whichSocketSelected = selectDateTableViewHelper.socketNumber
+                vc.appointmentHour = selectDateTableViewHelper.hour
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    private func setTitle(title:String, subtitle:String) -> UIView {
         let titleLabel = UILabel(frame: CGRect(x: 0, y: -10, width: 0, height: 0))
-
+        
         titleLabel.backgroundColor = UIColor.clear
         titleLabel.textColor = Asset.solidWhite.color
         titleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         titleLabel.text = title
         titleLabel.sizeToFit()
-
+        
         let subtitleLabel = UILabel(frame: CGRect(x: 0, y: 18, width: 0, height: 0))
         subtitleLabel.backgroundColor = UIColor.clear
         subtitleLabel.textColor = Asset.grayscaleGray25.color
         subtitleLabel.font = UIFont.boldSystemFont(ofSize: 12)
         subtitleLabel.text = subtitle
         subtitleLabel.sizeToFit()
-
+        
         let titleView = UIView(frame: CGRect(x: 0, y: 0, width: max(titleLabel.frame.size.width, subtitleLabel.frame.size.width), height: 30))
         titleView.addSubview(titleLabel)
         titleView.addSubview(subtitleLabel)
-
+        
         let widthDiff = subtitleLabel.frame.size.width - titleLabel.frame.size.width
-
+        
         if widthDiff < 0 {
             let newX = widthDiff / 2
             subtitleLabel.frame.origin.x = abs(newX)
@@ -100,12 +146,12 @@ class SelectDateViewController: UIViewController {
             let newX = widthDiff / 2
             titleLabel.frame.origin.x = newX
         }
-
+        
         return titleView
     }
     
-    func createDatePicker(){
-
+    private func createDatePicker(){
+        
         // toolbar
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
@@ -136,38 +182,13 @@ class SelectDateViewController: UIViewController {
         datePickerTextField.text = formatDate(date: Date()) // today
     }
     
-    @objc
-    func doneTapped(){
-        datePickerTextField.text = formatDate(date: datePicker.date)
-       
-        viewModel.getAvailableAppointments(stationId, datePicker.date)
-//        selectDateTableViewHelper.reloadTable(items: appointment)
-        self.view.endEditing(true)
-    }
-    
-    @objc
-    func dateChange(datepicker: UIDatePicker){
-        datePickerTextField.text = formatDate(date: datepicker.date)
-    }
-
-    func formatDate(date: Date) -> String {
+    private func formatDate(date: Date) -> String {
         let formatter = DateFormatter()
         formatter.dateStyle = .medium
         formatter.timeStyle = .none
-         
+        
         formatter.dateFormat = "dd MMM yyyy"
         return formatter.string(from: date)
-    }
-    
-    @IBAction func continueButtonTapped(_ sender: Any) {
-        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AppointmentSummaryViewController") as? AppointmentSummaryViewController{
-            vc.appointmentDate = datePicker.date
-            vc.stationId = stationId
-            vc.whichSocketSelected = selectDateTableViewHelper.socketNumber
-            vc.appointmentHour = selectDateTableViewHelper.hour
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
-        
     }
 }
 
@@ -177,11 +198,48 @@ extension SelectDateViewController: SelectDateViewModelDelegate {
             self.loadingIndicator.startAnimating()
             self.appointment = items
             self.subTitle = items.stationName
+            self.selectDateTableViewHelper.socketCount = items.sockets?.count ?? 1
+            
             self.navigationItem.titleView =  self.setTitle(title: "Tarih ve Saat Seçin", subtitle: self.subTitle ?? "")
-            self.socketTypeOneLabel.text = "\(items.sockets![0].chargeType!) • \(items.sockets![0].socketType!)"
-            self.socketTypeTwoLabel.text = "\(items.sockets?[1].chargeType ?? " ") • \(items.sockets?[1].socketType ?? " ")"
-            self.socketTypeThreeLabel.text = "\(items.sockets?[2].chargeType ?? " ") • \(items.sockets?[2].socketType ?? " ")"
+            if items.sockets?.count ?? 1 == 1 {
+                self.socketTypeOneLabel.text = "\(items.sockets?[0].chargeType ?? "") • \(items.sockets?[0].socketType ?? "")"
+                
+                self.socketTypeOneLabel.isHidden = false
+                self.socketTypeTwoLabel.isHidden = true
+                self.socketTypeThreeLabel.isHidden = true
+                
+                self.socketOneLabel.isHidden = false
+                self.socketTwoLabel.isHidden = true
+                self.socketThreeLabel.isHidden = true
+                
+            } else if items.sockets?.count ?? 1 == 2 {
+                self.socketTypeOneLabel.text = "\(items.sockets?[0].chargeType ?? "") • \(items.sockets?[0].socketType ?? "")"
+                self.socketTypeTwoLabel.text = "\(items.sockets?[1].chargeType ?? "") • \(items.sockets?[1].socketType ?? "")"
+                
+                self.socketTypeOneLabel.isHidden = false
+                self.socketTypeTwoLabel.isHidden = false
+                self.socketTypeThreeLabel.isHidden = true
+                
+                self.socketOneLabel.isHidden = false
+                self.socketTwoLabel.isHidden = false
+                self.socketThreeLabel.isHidden = true
+                
+            } else if items.sockets?.count ?? 1 == 3 {
+                self.socketTypeOneLabel.isHidden = false
+                self.socketTypeTwoLabel.isHidden = false
+                self.socketTypeThreeLabel.isHidden = false
+                
+                self.socketOneLabel.isHidden = false
+                self.socketTwoLabel.isHidden = false
+                self.socketThreeLabel.isHidden = false
+                
+                self.socketTypeOneLabel.text = "\(items.sockets?[0].chargeType ?? "") • \(items.sockets?[0].socketType ?? "")"
+                self.socketTypeTwoLabel.text = "\(items.sockets?[1].chargeType ?? "") • \(items.sockets?[1].socketType ?? "")"
+                self.socketTypeThreeLabel.text = "\(items.sockets?[2].chargeType ?? "") • \(items.sockets?[2].socketType ?? "")"
+            }
+            
             self.selectDateTableViewHelper.reloadTable(items: items)
+            
             self.loadingIndicator.stopAnimating()
             self.loadingIndicator.isHidden = true
             

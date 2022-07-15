@@ -164,24 +164,40 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        
+        let label = UILabel()
+        label.frame = CGRect.init(x: 16, y: -10, width: headerView.frame.width-10, height: headerView.frame.height-10)
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
+        label.textColor = Asset.grayscaleGray25.color
+        
         if section == 0 {
             if availableAppointments?.count ?? 0 > 0 {
-                return "GÜNCEL RANDEVULAR"
+                label.text = "GÜNCEL RANDEVULAR"
+            }else {
+                headerView.isHidden = true
+                label.text = ""
             }
-            return ""
         }else {
             if pastAppointments?.count ?? 0 > 0 {
-                return "GEÇMİŞ RANDEVULAR"
+                label.text = "GEÇMİŞ RANDEVULAR"
+            }else {
+                headerView.isHidden = true
+                label.text = ""
             }
-            return ""
         }
+        
+        headerView.addSubview(label)
+        
+        return headerView
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         if let view = view as? UITableViewHeaderFooterView {
             view.textLabel?.textColor = Asset.grayscaleGray25.color
+            view.textLabel?.backgroundColor = .clear
         }
     }
 }
