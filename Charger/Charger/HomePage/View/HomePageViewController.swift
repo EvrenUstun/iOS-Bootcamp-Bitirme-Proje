@@ -16,23 +16,27 @@ class HomePageViewController: UIViewController {
     @IBOutlet weak var listAppointmentLabel: UILabel!
     @IBOutlet weak var appointmentTableView: UITableView!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     private let viewModel = HomePageViewModel()
     private var homePageTableViewHelper: HomePageTableViewHelper!
     private var approvedAppointments: [ApprovedAppointment]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupUI()
         viewModel.getUserAppointments()
-        
         NotificationCenter.default.addObserver(self, selector: #selector(reloadTableViewData), name: NSNotification.Name(rawValue: "reloadData"), object: nil)
     }
+    
     @objc func reloadTableViewData() {
         viewModel.getUserAppointments()
     }
     
     func setupUI() {
+        self.homePageAppIconView.isHidden = true
+        self.noAppointmentLabel.isHidden = true
+        self.listAppointmentLabel.isHidden = true
+        
         // Gradient background settings.
         prepareGradientBackground()
         
@@ -44,7 +48,7 @@ class HomePageViewController: UIViewController {
         
         viewModel.delegate = self
         
-        homePageTableViewHelper = .init(with: appointmentTableView, view: self.view)
+        homePageTableViewHelper = .init(with: appointmentTableView, view: self.view, hpvc: self)
     }
     
     @objc
@@ -64,6 +68,7 @@ class HomePageViewController: UIViewController {
 extension HomePageViewController: HomePageViewModelDelegate {
     func didItemsFetch(_ items: [ApprovedAppointment]) {
         DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
             if items.count > 0 {
                 self.homePageAppIconView.isHidden = true
                 self.noAppointmentLabel.isHidden = true
@@ -74,7 +79,8 @@ extension HomePageViewController: HomePageViewModelDelegate {
                 self.noAppointmentLabel.isHidden = false
                 self.listAppointmentLabel.isHidden = false
             }
-            
+            self.loadingIndicator.stopAnimating()
+            self.loadingIndicator.isHidden = true
         }
     }
 }

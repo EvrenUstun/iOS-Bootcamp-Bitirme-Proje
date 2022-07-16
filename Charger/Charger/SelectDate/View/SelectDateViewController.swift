@@ -25,7 +25,6 @@ class SelectDateViewController: UIViewController {
     var stationId: Int!
     private var subTitle: String?
     private var appointment: Appointment!
-    var popup: Popup!
     private var selectDateTableViewHelper: SelectDateTableViewHelper!
     let datePicker = UIDatePicker()
     private let viewModel = SelectDateViewModel()
@@ -66,7 +65,6 @@ class SelectDateViewController: UIViewController {
         datePickerTextField.text = formatDate(date: datePicker.date)
         
         viewModel.getAvailableAppointments(stationId, datePicker.date)
-        //        selectDateTableViewHelper.reloadTable(items: appointment)
         self.view.endEditing(true)
     }
     
@@ -76,15 +74,9 @@ class SelectDateViewController: UIViewController {
     }
     
     @objc
-    func didEditButtonTapped(){
-        self.popup.removeFromSuperview()
-    }
-    
-    @objc
     func didSelectTodayButtonTapped(){
         datePicker.date = Date.now
         datePickerTextField.text = formatDate(date: Date.now)
-        self.popup.removeFromSuperview()
         viewModel.getAvailableAppointments(stationId, datePicker.date)
     }
     
@@ -99,13 +91,22 @@ class SelectDateViewController: UIViewController {
         let currentHour = Calendar.current.component(.hour, from: now)
         
         if (order == .orderedSame && currentHour >= separatedHour) || (order == .orderedDescending) {
-            self.popup = Popup(frame: self.view.frame)
-            self.popup.firstButton.setImage(Asset.editButton.image, for: .normal)
-            self.popup.secondButton.setImage(Asset.selectTodayButton.image, for: .normal)
-            self.popup.firstButton?.addTarget(self, action: #selector(self.didEditButtonTapped), for: .touchUpInside)
-            self.popup.secondButton?.addTarget(self, action: #selector(self.didSelectTodayButtonTapped), for: .touchUpInside)
-            
-            self.view.addSubview(self.popup)
+            if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopupViewController") as? PopupViewController {
+                vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+                UIView.transition(with: self.view, duration: 0.50, options: [.transitionCrossDissolve],
+                                  animations: {
+                    self.addChild(vc)
+                    self.view.addSubview(vc.view)
+                }, completion: nil)
+                
+                vc.popupTitleLabel.text = "Geçersiz Tarih"
+                vc.popupDescriptionLabel.text = "Geçmiş bir tarihe randevu alamazsınız."
+                
+                vc.popupFirstButton.setImage(Asset.editButton.image, for: .normal)
+                vc.popupSecondButton.setImage(Asset.selectTodayButton.image, for: .normal)
+                
+                vc.popupSecondButton.addTarget(self, action: #selector(didSelectTodayButtonTapped), for: .touchUpInside)
+            }
         }else {
             if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AppointmentSummaryViewController") as? AppointmentSummaryViewController{
                 vc.appointmentDate = datePicker.date
