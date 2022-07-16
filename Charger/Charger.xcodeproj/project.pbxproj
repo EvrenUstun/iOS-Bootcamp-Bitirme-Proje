@@ -33,6 +33,7 @@
 		B196469D2878552500F7AD2D /* SelectDateTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196469C2878552500F7AD2D /* SelectDateTableViewHelper.swift */; };
 		B19646A028788E7A00F7AD2D /* SelectDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B196469E28788E7A00F7AD2D /* SelectDateTableViewCell.swift */; };
 		B19646A128788E7A00F7AD2D /* SelectDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B196469F28788E7A00F7AD2D /* SelectDateTableViewCell.xib */; };
+		B19C879A2882DAC200860A04 /* PopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B19C87992882DAC200860A04 /* PopupViewController.swift */; };
 		B19CFB082872D434006CE9D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B19CFB072872D434006CE9D9 /* Assets.xcassets */; };
 		B1A1351D2868A531008D4DFB /* ProjectRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A1351C2868A531008D4DFB /* ProjectRepository.swift */; };
 		B1A69548287351000084F72D /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A69547287351000084F72D /* Assets.swift */; };
@@ -46,15 +47,11 @@
 		B1A6956028737D100084F72D /* StationCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6955E28737D100084F72D /* StationCustomTableViewCell.swift */; };
 		B1A6956128737D100084F72D /* StationCustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */; };
 		B1B2CE672880017A0050CDAC /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B2CE662880017A0050CDAC /* DateExtension.swift */; };
-		B1B2CE692880077F0050CDAC /* InvalidDatePopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1B2CE682880077F0050CDAC /* InvalidDatePopup.xib */; };
 		B1B687F0286F01FA00B3398E /* CityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B687EF286F01FA00B3398E /* CityViewModel.swift */; };
 		B1B687F2286F13B700B3398E /* SelectCityTableViewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B687F1286F13B700B3398E /* SelectCityTableViewHelper.swift */; };
 		B1B9CB3A2874BB6B00C70FD5 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1B9CB392874BB6B00C70FD5 /* FilterViewController.swift */; };
 		B1CE37A5287B21BF0022CBEB /* AppointmentSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1CE37A4287B21BF0022CBEB /* AppointmentSummaryViewController.swift */; };
 		B1D79671287F23EE000B0214 /* NotificationPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D79670287F23EE000B0214 /* NotificationPublisher.swift */; };
-		B1D79675287F345E000B0214 /* InvalidNotificationTimePopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1D79674287F345E000B0214 /* InvalidNotificationTimePopup.xib */; };
-		B1D79677287F3953000B0214 /* InvalidDatePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D79676287F3953000B0214 /* InvalidDatePopup.swift */; };
-		B1D79679287F3967000B0214 /* InvalidNotificationTimePopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D79678287F3967000B0214 /* InvalidNotificationTimePopup.swift */; };
 		B1D9FCEA287A00B50088CC68 /* SelectDateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9FCE9287A00B50088CC68 /* SelectDateModel.swift */; };
 		B1D9FCED287A01830088CC68 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9FCEC287A01830088CC68 /* Appointment.swift */; };
 		B1D9FCEF287A05E40088CC68 /* SelectDateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D9FCEE287A05E40088CC68 /* SelectDateViewModel.swift */; };
@@ -66,8 +63,6 @@
 		B1DB5ED828675E5600431F80 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1DB5ED728675E5600431F80 /* StringExtension.swift */; };
 		B1E97384287C557F004E3AA3 /* AppointmentSummaryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97383287C557F004E3AA3 /* AppointmentSummaryModel.swift */; };
 		B1E97386287C558F004E3AA3 /* AppointmentSummaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1E97385287C558F004E3AA3 /* AppointmentSummaryViewModel.swift */; };
-		B1F6E56F287EA6FE002B99E9 /* Popup.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1F6E56E287EA6FE002B99E9 /* Popup.swift */; };
-		B1F6E571287EA71A002B99E9 /* Popup.xib in Resources */ = {isa = PBXBuildFile; fileRef = B1F6E570287EA71A002B99E9 /* Popup.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -98,6 +93,7 @@
 		B196469C2878552500F7AD2D /* SelectDateTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateTableViewHelper.swift; sourceTree = "<group>"; };
 		B196469E28788E7A00F7AD2D /* SelectDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateTableViewCell.swift; sourceTree = "<group>"; };
 		B196469F28788E7A00F7AD2D /* SelectDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectDateTableViewCell.xib; sourceTree = "<group>"; };
+		B19C87992882DAC200860A04 /* PopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupViewController.swift; sourceTree = "<group>"; };
 		B19CFB072872D434006CE9D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B1A1351C2868A531008D4DFB /* ProjectRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectRepository.swift; sourceTree = "<group>"; };
 		B1A69547287351000084F72D /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Assets.swift; path = Charger/Theme/Assets.swift; sourceTree = SOURCE_ROOT; };
@@ -111,15 +107,11 @@
 		B1A6955E28737D100084F72D /* StationCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationCustomTableViewCell.swift; sourceTree = "<group>"; };
 		B1A6955F28737D100084F72D /* StationCustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCustomTableViewCell.xib; sourceTree = "<group>"; };
 		B1B2CE662880017A0050CDAC /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
-		B1B2CE682880077F0050CDAC /* InvalidDatePopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvalidDatePopup.xib; sourceTree = "<group>"; };
 		B1B687EF286F01FA00B3398E /* CityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityViewModel.swift; sourceTree = "<group>"; };
 		B1B687F1286F13B700B3398E /* SelectCityTableViewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCityTableViewHelper.swift; sourceTree = "<group>"; };
 		B1B9CB392874BB6B00C70FD5 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		B1CE37A4287B21BF0022CBEB /* AppointmentSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSummaryViewController.swift; sourceTree = "<group>"; };
 		B1D79670287F23EE000B0214 /* NotificationPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPublisher.swift; sourceTree = "<group>"; };
-		B1D79674287F345E000B0214 /* InvalidNotificationTimePopup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvalidNotificationTimePopup.xib; sourceTree = "<group>"; };
-		B1D79676287F3953000B0214 /* InvalidDatePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidDatePopup.swift; sourceTree = "<group>"; };
-		B1D79678287F3967000B0214 /* InvalidNotificationTimePopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvalidNotificationTimePopup.swift; sourceTree = "<group>"; };
 		B1D9FCE9287A00B50088CC68 /* SelectDateModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateModel.swift; sourceTree = "<group>"; };
 		B1D9FCEC287A01830088CC68 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		B1D9FCEE287A05E40088CC68 /* SelectDateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectDateViewModel.swift; sourceTree = "<group>"; };
@@ -133,8 +125,6 @@
 		B1DB5ED728675E5600431F80 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		B1E97383287C557F004E3AA3 /* AppointmentSummaryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSummaryModel.swift; sourceTree = "<group>"; };
 		B1E97385287C558F004E3AA3 /* AppointmentSummaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentSummaryViewModel.swift; sourceTree = "<group>"; };
-		B1F6E56E287EA6FE002B99E9 /* Popup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Popup.swift; sourceTree = "<group>"; };
-		B1F6E570287EA71A002B99E9 /* Popup.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Popup.xib; sourceTree = "<group>"; };
 		B6701548B2003B52E5D36883 /* Pods_Charger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Charger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -522,12 +512,7 @@
 		B1F6E56D287EA6A5002B99E9 /* Popup */ = {
 			isa = PBXGroup;
 			children = (
-				B1F6E56E287EA6FE002B99E9 /* Popup.swift */,
-				B1F6E570287EA71A002B99E9 /* Popup.xib */,
-				B1D79676287F3953000B0214 /* InvalidDatePopup.swift */,
-				B1B2CE682880077F0050CDAC /* InvalidDatePopup.xib */,
-				B1D79678287F3967000B0214 /* InvalidNotificationTimePopup.swift */,
-				B1D79674287F345E000B0214 /* InvalidNotificationTimePopup.xib */,
+				B19C87992882DAC200860A04 /* PopupViewController.swift */,
 			);
 			path = Popup;
 			sourceTree = "<group>";
@@ -601,15 +586,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1D79675287F345E000B0214 /* InvalidNotificationTimePopup.xib in Resources */,
 				B1DB5ED028675E2E00431F80 /* LaunchScreen.storyboard in Resources */,
 				B19CFB082872D434006CE9D9 /* Assets.xcassets in Resources */,
 				B159AC0E287C9F02008C0DEF /* HomePageCustomTableViewCell.xib in Resources */,
-				B1F6E571287EA71A002B99E9 /* Popup.xib in Resources */,
 				B19646A128788E7A00F7AD2D /* SelectDateTableViewCell.xib in Resources */,
 				B13186332880676500CC62DC /* FilterCollectionViewCell.xib in Resources */,
 				B1DB5ECB28675E2C00431F80 /* Main.storyboard in Resources */,
-				B1B2CE692880077F0050CDAC /* InvalidDatePopup.xib in Resources */,
 				B1A6956128737D100084F72D /* StationCustomTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -666,12 +648,12 @@
 			files = (
 				B1B2CE672880017A0050CDAC /* DateExtension.swift in Sources */,
 				B1A6955B287373EA0084F72D /* UIApplication.swift in Sources */,
+				B19C879A2882DAC200860A04 /* PopupViewController.swift in Sources */,
 				B12834DB2868381C007C8BFF /* HomePageViewController.swift in Sources */,
 				B1A6955D287376460084F72D /* StationViewModel.swift in Sources */,
 				B1309FFF286E2FE900B54A7B /* AlertManager.swift in Sources */,
 				B159AC08287C998D008C0DEF /* HomePageViewModel.swift in Sources */,
 				B159AC0A287C999C008C0DEF /* HomePageModel.swift in Sources */,
-				B1D79677287F3953000B0214 /* InvalidDatePopup.swift in Sources */,
 				B1E97386287C558F004E3AA3 /* AppointmentSummaryViewModel.swift in Sources */,
 				B1DB5EC828675E2C00431F80 /* LoginViewController.swift in Sources */,
 				B1B687F2286F13B700B3398E /* SelectCityTableViewHelper.swift in Sources */,
@@ -687,7 +669,6 @@
 				B1A69559287369D80084F72D /* StationTableViewHelper.swift in Sources */,
 				B13DFC16287E03D100CAE4F7 /* LogoutviewModel.swift in Sources */,
 				B1B687F0286F01FA00B3398E /* CityViewModel.swift in Sources */,
-				B1D79679287F3967000B0214 /* InvalidNotificationTimePopup.swift in Sources */,
 				B17314C4286A0C6B005F6A1B /* City.swift in Sources */,
 				B1145D68287777250042B103 /* FilterViewHelper.swift in Sources */,
 				B1DB5EC628675E2C00431F80 /* SceneDelegate.swift in Sources */,
@@ -696,7 +677,6 @@
 				B1D9FCED287A01830088CC68 /* Appointment.swift in Sources */,
 				B13186322880676500CC62DC /* FilterCollectionViewCell.swift in Sources */,
 				B1175E3C2868464600D91661 /* ProfileViewController.swift in Sources */,
-				B1F6E56F287EA6FE002B99E9 /* Popup.swift in Sources */,
 				B159AC0D287C9F02008C0DEF /* HomePageCustomTableViewCell.swift in Sources */,
 				B19646A028788E7A00F7AD2D /* SelectDateTableViewCell.swift in Sources */,
 				B17CEAE8286E22950045BE16 /* LoginViewModel.swift in Sources */,
