@@ -98,7 +98,7 @@ class SelectDateViewController: UIViewController {
         
         let currentHour = Calendar.current.component(.hour, from: now)
         
-        if order == .orderedDescending || currentHour >= separatedHour{
+        if (order == .orderedSame && currentHour >= separatedHour) || (order == .orderedDescending) {
             self.popup = Popup(frame: self.view.frame)
             self.popup.firstButton.setImage(Asset.editButton.image, for: .normal)
             self.popup.secondButton.setImage(Asset.selectTodayButton.image, for: .normal)
