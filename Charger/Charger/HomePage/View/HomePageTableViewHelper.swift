@@ -18,13 +18,13 @@ class HomePageTableViewHelper: NSObject {
     private var availableAppointments: [ApprovedAppointment]?
     var appointmentId: Int?
     var row: Int!
-    var popup: Popup!
-    var popupDescription: String!
     private let viewModel = HomePageViewModel()
+    var hpvc: HomePageViewController!
     
     init(
         with appointmentTableView: UITableView,
-        view: UIView
+        view: UIView,
+        hpvc: HomePageViewController
     ) {
         super.init()
         
@@ -35,7 +35,7 @@ class HomePageTableViewHelper: NSObject {
         
         self.view = view
         
-        self.popup = Popup(frame: self.view.frame)
+        self.hpvc = hpvc
         
         registerCell()
     }
@@ -53,7 +53,14 @@ class HomePageTableViewHelper: NSObject {
     
     func formatDate(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.dateFormat = "dd MMMM yyyy"
+        
+        return formatter.string(from: date)
+    }
+    
+    func formatDateShortMonth(date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd MMM yyyy"
         
         return formatter.string(from: date)
     }
@@ -64,17 +71,11 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     func deleteItem(_ appointmentId: Int){
         viewModel.deleteAppointment(appointmentId)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reloadData"), object: nil)
-        self.popup.removeFromSuperview()
     }
     
     @objc
     func didDeleteButtonTapped(){
         deleteItem(appointmentId ?? 0)
-    }
-    
-    @objc
-    func didCloseButtonTapped(){
-        self.popup.removeFromSuperview()
     }
     
     @objc
@@ -85,18 +86,30 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     @objc
     func didTrashIconTapped(_ sender: UITapGestureRecognizer){
         appointmentId = sender.view?.layer.value(forKey: "appointmentID") as? Int
-        row = sender.view?.layer.value(forKey: "row") as! Int
+        row = (sender.view?.layer.value(forKey: "row") as! Int)
         
-        popup.firstButton.setImage(Asset.cancelAppointmentButton.image, for: .normal)
-        popup.secondButton.setImage(Asset.cancelButton.image, for: .normal)
-        
-        let description: String = "\(availableAppointments?[row].stationName ?? "") istasyonundaki \(availableAppointments?[row].date ?? "") saat  \(availableAppointments?[row].time ?? "") randevunuz iptal edilecektir."
-        self.popup.popupTitleLabel?.text = "denenejn"
-        self.popup.popupDescriptionLabel?.text = description
-        
-        self.popup.firstButton.addTarget(self, action: #selector(didDeleteButtonTapped), for: .touchUpInside)
-        self.popup.secondButton.addTarget(self, action: #selector(didCloseButtonTapped), for: .touchUpInside)
-        self.view.addSubview(popup)
+        if let vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PopupViewController") as? PopupViewController {
+            vc.view.backgroundColor = UIColor.black.withAlphaComponent(0.6)
+            UIView.transition(with: self.view, duration: 0.50, options: [.transitionCrossDissolve],
+                              animations: {
+                self.hpvc.addChild(vc)
+                self.hpvc.view.addSubview(vc.view)
+            }, completion: nil)
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            let date = dateFormatter.date(from: (availableAppointments?[row].date ?? ""))
+            
+            let description: String = "\(availableAppointments?[row].stationName ?? "") istasyonundaki \(formatDate(date: date ?? Date.now)) saat  \(availableAppointments?[row].time ?? "") randevunuz iptal edilecektir."
+            
+            vc.popupTitleLabel.text = "Randevu İptali"
+            vc.popupDescriptionLabel.text = description
+            
+            vc.popupFirstButton.setImage(Asset.cancelAppointmentButton.image, for: .normal)
+            vc.popupSecondButton.setImage(Asset.cancelButton.image, for: .normal)
+            
+            vc.popupFirstButton.addTarget(self, action: #selector(didDeleteButtonTapped), for: .touchUpInside)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -150,11 +163,21 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
             cell.chargeTypeIcon.image = Asset.acavatar.image
         }
         
+        cell.notificaitonLabel.text = "\(appointment?[indexPath.row].station?.sockets?.filter{ $0.socketID == appointment?[indexPath.row].socketID }[0].power ?? 0) \(appointment?[indexPath.row].station?.sockets?.filter{ $0.socketID == appointment?[indexPath.row].socketID }[0].powerUnit ?? "")"
+        
         cell.socketNummberLabel.text = "\(appointment?[indexPath.row].station?.sockets?.filter{ $0.socketID == appointment?[indexPath.row].socketID }[0].socketNumber ?? 0)"
         
         cell.chargerAndSocketTypeLabel.text = (appointment?[indexPath.row].station?.sockets?.filter{ $0.socketID == appointment?[indexPath.row].socketID }[0].chargeType ?? "") + " • " + (appointment?[indexPath.row].station?.sockets?.filter{ $0.socketID == appointment?[indexPath.row].socketID }[0].socketType ?? "")
         
-        cell.dateLabel.text = "\(appointment?[indexPath.row].date ?? ""), \(appointment?[indexPath.row].time ?? "")"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let date = dateFormatter.date(from: (appointment?[indexPath.row].date ?? ""))
+        
+        if Calendar.current.isDateInToday(date!) {
+            cell.dateLabel.text = "Bugün, \(appointment?[indexPath.row].time ?? "")"
+        }else {
+            cell.dateLabel.text = "\(formatDateShortMonth(date: date ?? Date.now)), \(appointment?[indexPath.row].time ?? "")"
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -164,7 +187,7 @@ extension HomePageTableViewHelper: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-        
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 50))
         
