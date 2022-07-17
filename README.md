@@ -39,7 +39,7 @@
 # Kullanılan Teknolojiler
 
 * Swift 5.6.1
-* SwiftGen 6.5.1
+* SwiftGen 6.5.1 (Tema sınıfı için kullanılan 3. parti kütüphane)
 * Xcode 13.4.1
 
 # Uygulamada Bulunan Bug'lar
@@ -61,47 +61,44 @@
 ## Giriş Yapma
 <br>
 
-![](/Screenshot/login.gif)
+<img src="/Screenshot/login.gif" width="300" height="600" />
 
 <br>
 
 ## Randevu Alma
 <br>
 
-![](/Screenshot/Randevu_Alma.gif)
+<img src="/Screenshot/Randevu_Alma.gif" width="300" height="600" />
 
 <br>
 
-![](/Screenshot/Home_Page_Ge%C3%A7mi%C5%9F_Randevu.png)
-
-
+<img src="/Screenshot/Home_Page_Ge%C3%A7mi%C5%9F_Randevu.png" width="300" height="600" />
 
 <br>
 
 ## Randevu İptal 
 <br>
 
-![](/Screenshot/Randevu_%C4%B0ptal_Etme.gif)
+<img src="/Screenshot/Randevu_%C4%B0ptal_Etme.gif" width="300" height="600" />
 
 <br>
 
 ## Hesaptan Çıkış
 <br>
-
-![](/Screenshot/Hesaptan_%C3%87%C4%B1kma.gif)
+<img src="/Screenshot/Hesaptan_%C3%87%C4%B1kma.gif" width="300" height="600" />
 
 <br>
 
 ## 2 Soketli İstasyonlar
 <br>
 
-![](/Screenshot/2soket.png)
+<img src="/Screenshot/2soket.png" width="300" height="600" />
 
 <br>
 
 ## 3 Soketli İstasyonlar
 <br>
 
-![](/Screenshot/3soket.png)
+<img src="/Screenshot/3soket.png" width="300" height="600" />
 
 <br>
