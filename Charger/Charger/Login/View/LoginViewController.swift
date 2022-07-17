@@ -49,7 +49,6 @@ class LoginViewController: UIViewController, CLLocationManagerDelegate {
         prepareGradientBackground()
         
         navigationItem.hidesBackButton = true
-        emailTextfield.text = "deneme@gmail.com"  //Silinecek
         
         // E-mail text field settings.
         emailTextfield.attributedPlaceholder = NSAttributedString(

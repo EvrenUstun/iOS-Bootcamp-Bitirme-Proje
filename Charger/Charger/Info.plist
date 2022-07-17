@@ -31,6 +31,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Sarj istasyonların uzaklıklaırını gösterebilmek için konumunuza ihtiyacımız var.</string>
+	<string>Şarj istasyonların uzaklıklaırını gösterebilmek için konumunuza ihtiyacımız var.</string>
+	<key>NSUserNotificationsUsageDescription</key>
+	<string>Randevunuzu hatırlatmak için bildirim izninize ihtiyacımız var.</string>
 </dict>
 </plist>
