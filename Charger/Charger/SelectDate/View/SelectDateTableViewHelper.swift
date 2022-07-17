@@ -84,12 +84,7 @@ extension SelectDateTableViewHelper: UITableViewDelegate, UITableViewDataSource 
         }
         return 0
     }
-    
-    private func disabledCell(_ cell: SelectDateTableViewCell){
-        cell.isUserInteractionEnabled = false
-        cell.hourLabel.textColor = Asset.grayscaleGray25.color
-    }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if socketCount == 1{

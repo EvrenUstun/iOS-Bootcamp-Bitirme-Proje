@@ -58,10 +58,16 @@ class StationModel{
                 }
                 // statins filter by charger type, socket type, service and distance
                 filteredByCityStations = self.filteredByChargerType(filteredByCityStations, chargerTypeFilter, socketTypeFilter, serviceFilter, distance)
+                
                 // Stations sort by km
-                filteredByCityStations.sort {
-                    $0.distanceInKM! < $1.distanceInKM!
+                if filteredByCityStations.count > 0{
+                    if filteredByCityStations[0].distanceInKM != nil{
+                        filteredByCityStations.sort {
+                            $0.distanceInKM! < $1.distanceInKM!
+                        }
+                    }
                 }
+                
                 completion(.success(filteredByCityStations))
             }catch{
                 completion(.failure(error))
@@ -116,19 +122,25 @@ class StationModel{
     }
     
     private func filteredByDistance(_ filteredByServiceStations: [Station], _ distance: Float) -> [Station] {
-        switch distance{
-        case 15:
-            return filteredByServiceStations
-        case 12:
-            return filteredByServiceStations.filter { $0.distanceInKM! <= 12.0 }
-        case 9:
-            return filteredByServiceStations.filter { $0.distanceInKM! <= 9.0 }
-        case 6:
-            return filteredByServiceStations.filter { $0.distanceInKM! <= 6.0 }
-        case 3:
-            return filteredByServiceStations.filter { $0.distanceInKM! <= 3.0 }
-        default:
+        if filteredByServiceStations.count > 0{
+            if filteredByServiceStations[0].distanceInKM != nil{
+                switch distance{
+                case 15:
+                    return filteredByServiceStations
+                case 12:
+                    return filteredByServiceStations.filter { $0.distanceInKM! <= 12.0 }
+                case 9:
+                    return filteredByServiceStations.filter { $0.distanceInKM! <= 9.0 }
+                case 6:
+                    return filteredByServiceStations.filter { $0.distanceInKM! <= 6.0 }
+                case 3:
+                    return filteredByServiceStations.filter { $0.distanceInKM! <= 3.0 }
+                default:
+                    return filteredByServiceStations
+                }
+            }
             return filteredByServiceStations
         }
+        return filteredByServiceStations
     }
 }
